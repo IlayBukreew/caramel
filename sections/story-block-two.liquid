@@ -1,9 +1,13 @@
-<section class="story-one" id={{section.id}}>
-	<h3 class="story-heading"><span>Craft —</span> Pattern </h3>
+<section class="story-two" id="section-{{section.id}}">
+
 	<div class="content">
 		<div class="col-one">
 			<div class="col-content">
+				<h3 class="story-heading"><span>Craft —</span> Pattern </h3>
+				{%if section.settings.main_img %}
 				<img src="{{ section.settings.main_img | img_url: 'original' }}">
+				{% endif %}
+
 				<a class="Form__Submit Button Button--primary"
 					href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}<span>→</span></a>
 			</div>
@@ -11,10 +15,12 @@
 		<div class="col-two">
 			<h2>{{ section.settings.heading }}</h2>
 			<p>{{ section.settings.textarea }}</p>
-			<div class="circles">
-				<img src="{{ section.settings.img_1 | img_url: 'medium' }}" alt="">
-				<img src="{{ section.settings.img_2 | img_url: 'medium' }}" alt="">
-				<img src="{{ section.settings.img_3 | img_url: 'medium' }}" alt="">
+			<div class="image">
+				<h3>{{section.settings.image_heading}}</h3>
+				<p>{{ section.settings.image_text }}</p>
+				{%if section.settings.image_2 %}
+				<img src="{{ section.settings.image_2 | img_url: 'large' }}" alt="">
+				{% endif %}
 			</div>
 			<a class=" mobile-dblock Form__Submit Button Button--primary"
 				href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}<span>→</span></a>
@@ -33,7 +39,7 @@
 {
 "type": "image_picker",
 "id": "main_img",
-"label": "Image"
+"label": "First image"
 },
 {
 "type": "text",
@@ -58,26 +64,28 @@
 "label": "Description text"
 },
 {
-"type": "image_picker",
-"id": "img_1",
-"label": "Circle 1 image"
+"type": "text",
+"id": "image_heading",
+"label": "Second image heading",
+"default": "Heading"
+},
+{
+"type": "text",
+"id": "image_text",
+"label": "Second image text",
+"default": "Woodpecker cardigan, brown illum qui dolorem eum fugiat quo voluptas nulla pariatur"
 },
 {
 "type": "image_picker",
-"id": "img_2",
-"label": "Circle 2 image"
-},
-{
-"type": "image_picker",
-"id": "img_3",
-"label": "Circle 3 image"
+"id": "image_2",
+"label": "Second image"
 }
 
 ],
 "presets": [
 {
 "category": "Custom",
-"name": "Story block one"
+"name": "Story block two"
 }
 ]
 }

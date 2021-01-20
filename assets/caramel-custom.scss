@@ -8,6 +8,21 @@
   src: url("MaisonNeueWEB-Book.woff") format("woff");
 }
 
+@font-face {
+  font-family: "NewCenturySchlbkLTStd_Roman";
+  src: url("NewCenturySchlbkLTStd-Roman.otff") format("woff");
+}
+
+@font-face {
+  font-family: "NewCenturySchlbkLTStd_It";
+  src: url("NewCenturySchlbkLTStd-It.otf") format("woff");
+}
+
+@font-face {
+  font-family: "NewCenturySchlbkLTStd_Bd";
+  src: url("NewCenturySchlbkLTStd-Bd.otf") format("woff");
+}
+
 .Heading,
 body {
   font-family: 'MaisonNeueWEB-Demi';
@@ -178,7 +193,9 @@ body {
 =            feaured collection            =
 =============================================*/
 
-#shopify-section-161073020374b9f2f7 {
+.collection-list-custom {
+  padding: 50px 0;
+
   .ProductItem__Info {
     text-align: left;
 
@@ -398,7 +415,6 @@ body {
     .Footer__Inner {
       min-width: 90vw;
 
-      .Footer__Block {}
     }
   }
 
@@ -440,6 +456,248 @@ body {
 
 /*=====  End of Footer  ======*/
 
+
+
+
+/*=============================================
+=            Story blocks            =
+=============================================*/
+.story-one,
+.story-two {
+  padding: 100px 0 20px 0;
+  position: relative;
+
+  .content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .col-one {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+    align-items: flex-end;
+
+    .col-content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .col-two {
+    margin-left: 100px;
+    flex-basis: 20%;
+
+    h2 {
+      font-size: 45px;
+      line-height: 55px;
+      letter-spacing: 0.5px;
+      font-family: MaisonNeueWEB-Book;
+      margin-bottom: 100px;
+    }
+
+    p {
+      font-family: NewCenturySchlbkLTStd_Roman;
+      font-size: 14px;
+      line-height: 1.33;
+      letter-spacing: 0.17px;
+
+    }
+  }
+
+  .Form__Submit {
+    max-width: 330px;
+
+    span {
+      font-size: 20px;
+      margin-left: 40px;
+    }
+  }
+
+  .Button--primary::before {
+    background-color: #f9f3ee;
+
+  }
+
+  .Button--primary {
+    color: #000;
+    background: #000 !important;
+  }
+
+  .Button--primary {
+    transition: all .4s ease;
+    text-shadow: 0 0 1px black;
+    text-align: left;
+    padding-left: 15px;
+    padding-right: 0;
+    margin-top: 40px;
+
+
+
+    &:hover {
+      color: #fbf9f6 !important;
+    }
+  }
+
+  .circles {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-top: 50px;
+
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50px;
+      margin-right: 15px;
+    }
+  }
+
+  .mobile-dblock {
+    display: none;
+  }
+
+
+
+  .story-heading {
+    position: absolute;
+    left: 100px;
+    font-style: italic;
+    letter-spacing: 0.58px;
+    line-height: 16px;
+    font-size: 14px;
+    width: 70px;
+    font-family: NewCenturySchlbkLTStd_It;
+
+    span {
+      margin-bottom: 15px;
+      font-style: normal;
+      text-shadow: 0 0 1px #000;
+      display: block;
+      font-family: NewCenturySchlbkLTStd_Bd;
+
+    }
+  }
+
+  @media (max-width: 1500px) {
+    .col-two {
+
+      flex-basis: 25%;
+
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .story-heading {
+
+      left: 50%;
+      width: unset;
+      top: 45px;
+      transform: translateX(-50%);
+
+      span {
+        display: inline;
+      }
+    }
+
+    .col-one {
+      flex-basis: 100%;
+      align-items: center;
+
+      .col-content {
+        padding: 0 30px;
+      }
+    }
+
+    .mobile-dblock {
+      display: block;
+      padding-right: 10px;
+    }
+
+    .col-two {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 90%;
+      align-items: center;
+      margin-top: 30px;
+      margin-left: 0;
+
+      h2 {
+        margin-bottom: 30px;
+      }
+
+      p {
+
+        text-align: center;
+
+      }
+    }
+
+    .col-content a {
+      display: none;
+    }
+  }
+
+}
+
+.story-two {
+  padding: 100px 0 50px 0;
+  background-color: #f9f3ee;
+
+  .story-heading {
+    position: static;
+    margin-bottom: 70px;
+  }
+
+  .col-two {
+    h2 {
+      margin-bottom: 55px;
+    }
+
+    .image {
+      margin-top: 75px;
+
+      p {
+        font-family: MaisonNeueWEB-Book;
+        text-transform: uppercase;
+        font-size: 12px;
+        line-height: 1.33;
+        letter-spacing: 1.5px;
+      }
+
+      h3 {
+        text-shadow: 0 0 1px #000;
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 12px;
+        line-height: 1.33;
+        letter-spacing: 1.5px;
+      }
+
+      img {
+        width: 100%;
+
+      }
+    }
+  }
+
+  @media screen and (max-width:1200px) {
+    .story-heading {
+      transform: translateX(0);
+      text-align: center;
+    }
+
+    .image {
+      display: none;
+    }
+  }
+
+
+}
+
+/*=====  End of Story blocks  ======*/
 
 
 

@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: "NewCenturySchlbkLTStd_Roman";
-  src: url("NewCenturySchlbkLTStd-Roman.otff") format("woff");
+  src: url("NewCenturySchlbkLTStd-Roman.otf") format("woff");
 }
 
 @font-face {
@@ -463,7 +463,8 @@ body {
 =            Story blocks            =
 =============================================*/
 .story-one,
-.story-two {
+.story-two,
+.story_block_three {
   padding: 100px 0 20px 0;
   position: relative;
 
@@ -698,6 +699,177 @@ body {
 }
 
 /*=====  End of Story blocks  ======*/
+
+
+/*=============================================
+=            Story block three            =
+=============================================*/
+.story_block_three {
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 100px 0 100px 0;
+  background-position: center;
+
+  .story-heading {
+    color: #ffffff;
+    position: static;
+  }
+
+  .Heading:not(.ProductItem__Label) {
+    color: #fff;
+  }
+
+  .ProductItem__Vendor {
+    font-family: MaisonNeueWEB-Book;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+.container_block_three {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px !important;
+
+  h2 {
+    font-size: 45px;
+    line-height: 55px;
+    letter-spacing: 0.5px;
+    font-family: MaisonNeueWEB-Book;
+    margin-bottom: 50px;
+    color: #fff;
+  }
+
+  p {
+    font-family: NewCenturySchlbkLTStd_Roman;
+    font-size: 14px;
+    line-height: 1.33;
+    letter-spacing: 0.17px;
+    color: #fff;
+
+  }
+
+  .left-col {
+    min-width: 67.8%;
+  }
+
+  .Button {
+    padding-right: 15px;
+
+    span {
+      font-size: 22px;
+      margin-left: 50px;
+    }
+  }
+
+  .Button--primary {
+    background-color: #fff0 !important;
+  }
+
+  .Button--primary:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  .Button--primary:hover::before {
+    background-color: #fff0;
+  }
+
+  .Button--primary::before {
+    background: #0000;
+  }
+
+
+  .mobile_visible {
+    display: none;
+  }
+
+
+  @media (max-width: 1300px) {
+
+    flex-wrap: wrap;
+
+    .Button {
+      display: none;
+    }
+
+    .mobile_visible {
+      display: inline-block;
+    }
+
+    .story-heading {
+      transform: translateX(0);
+    }
+
+    .left-col {
+      min-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .right-col {
+      text-align: center;
+      padding: 30px;
+    }
+  }
+
+}
+
+
+/*=====  End of Story block three  ======*/
+
+
+
+
+
+/*=============================================
+=            Video section            =
+=============================================*/
+
+.custom-video {
+  margin: 100px auto;
+  max-width: 67vw;
+
+
+  .SectionHeader__Heading {
+    font-family: MaisonNeueWEB-Demi;
+    font-size: 12px;
+    margin-top: 20px;
+  }
+
+  .SectionHeader__SubHeading {
+    font-family: MaisonNeueWEB-Book;
+    font-size: 12px;
+  }
+
+
+  @media (max-width: 800px) {
+    max-width: 85vw;
+
+    .ImageHero--large {
+      min-height: 200px;
+    }
+
+  }
+}
+
+
+/*=====  End of Video section  ======*/
+
+
+
 
 
 

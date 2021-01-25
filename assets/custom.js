@@ -37,5 +37,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     })
   }
+
+  // get flickity width
+  function getFlickWidth() {
+    if (window.innerWidth > 1300) {
+      const flickityDiv = document.querySelector(".flickity-slider"),
+        container = document.querySelector(".container_block_three")
+      let flickWidth = flickityDiv.getBoundingClientRect().left + 10
+      container.style.margin = ` 0 ${flickWidth}px`
+    }
+  }
   footerAccordion()
+  getFlickWidth()
 })

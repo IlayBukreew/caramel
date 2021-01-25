@@ -43,8 +43,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (window.innerWidth > 1300) {
       const flickityDiv = document.querySelector(".flickity-slider"),
         container = document.querySelector(".container_block_three")
-      let flickWidth = flickityDiv.getBoundingClientRect().left + 10
-      container.style.margin = ` 0 ${flickWidth}px`
+      if (flickityDiv) {
+        let flickWidth = flickityDiv.getBoundingClientRect().left + 10
+        container.style.margin = ` 0 ${flickWidth}px`
+      }
     }
   }
   footerAccordion()

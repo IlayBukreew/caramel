@@ -49,6 +49,83 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
+  // copy logo to mobile sidebar
+  function logoCopy() {
+    const divToInsert = document.getElementById('mobile_menu_logo'),
+      logo = document.querySelector('.Header__Wrapper .Header__LogoImage').cloneNode()
+    divToInsert.appendChild(logo)
+  }
+  // header sidebar
+  function sidebar() {
+    const links = document.querySelectorAll('.Header__Wrapper .HorizontalList__Item'),
+      mainDiv = document.getElementById('main'),
+      dropdownLinks = document.querySelectorAll('.DropdownMenu .Link'),
+      mainNav = document.querySelector('.Header__MainNav')
+
+    //close menu
+    function closeMenu() {
+      links.forEach(link => {
+        link.childNodes[2] ? link.childNodes[2].classList.remove('open') : null
+      })
+    }
+    // open menu
+    function openMenu(event) {
+      links.forEach(link => {
+        if (link.childNodes[1].getAttribute('href') != '/') {
+          event.preventDefault()
+          link.childNodes[2] ? link.childNodes[2].classList.add('open') : null
+          mainNav.classList.add('open')
+        }
+
+      })
+      event.target.nextElementSibling ? event.target.nextElementSibling.style.zIndex = 2 : null
+    }
+    // switching between menus 
+    function switchMenu(event) {
+      links.forEach(link => {
+        link.childNodes[2] ? link.childNodes[2].style.zIndex = '1' : null
+      })
+      event.target.childNodes[2] ? event.target.childNodes[2].style.zIndex = '2' : null
+    }
+
+    // fix link functionality
+    dropdownLinks.forEach(link => {
+      link.onclick = () => {
+        window.location = link.getAttribute('href')
+      }
+    })
+    // listeners for links
+    links.forEach(link => {
+      link.onclick = (e) => {
+        openMenu(e)
+      }
+      link.onmouseenter = (e) => {
+        switchMenu(e)
+      }
+    })
+
+
+    // close menu by clicking page
+    mainDiv.onclick = () => {
+      mainNav.classList.remove('open')
+      closeMenu()
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+  sidebar()
+  logoCopy()
   footerAccordion()
   getFlickWidth()
+  window.onresize = () => {
+    getFlickWidth()
+  }
 })

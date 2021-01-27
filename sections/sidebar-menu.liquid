@@ -6,6 +6,7 @@
       <button class="Drawer__Close Icon-Wrapper--clickable" data-action="close-drawer" data-drawer-id="sidebar-menu" aria-label="{{ 'header.navigation.close_sidebar' | t }}">
         {%- render 'icon' with 'close' -%}
       </button>
+        <a href="/"><h1 id="mobile_menu_logo" class="Header__Logo"></h1></a>
     </header>
 
     <div class="Drawer__Content">
@@ -51,6 +52,39 @@
                 {%- endif -%}
               </div>
             {%- endfor -%}
+
+
+
+             {%- for link in linklists.social-mobile.links -%}
+              <div class="social Collapsible">
+                {%- if link.links != blank -%}
+                  <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" {% if link.links != blank %}aria-expanded="false"{% endif %}>
+                    {{- link.title | escape -}} <span class="Collapsible__Plus"></span>
+                  </button>
+
+                  <div class="Collapsible__Inner">
+                    <div class="Collapsible__Content">
+                      {%- for sub_link in link.links -%}
+                        <div class="Collapsible">
+                          {%- if sub_link.links != blank -%}
+                            <button class="Collapsible__Button Heading Text--subdued Link--primary u-h7" data-action="toggle-collapsible" {% if sub_link.links != blank %}aria-expanded="false"{% endif %}>
+                              {{- sub_link.title | escape -}} <span class="Collapsible__Plus"></span>
+                            </button>
+
+                          {%- else -%}
+                            <a href="{{ sub_link.url }}" class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7">{{ sub_link.title | escape }}</a>
+                          {%- endif -%}
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- else -%}
+                  <a href="{{ link.url }}" class="Collapsible__Button Heading Link Link--primary u-h6">{{ link.title | escape }}</a>
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+
+  
           </nav>
 
           {%- assign secondary_menu = linklists[section.settings.secondary_menu] -%}

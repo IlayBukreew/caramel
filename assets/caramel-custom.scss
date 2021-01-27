@@ -219,6 +219,11 @@ body {
 
 
 
+/*=============================================
+=            Sidebar && header          =
+=============================================*/
+
+
 
 .supports-sticky .Search[aria-hidden="true"]+.Header--transparent {
   box-shadow: none !important;
@@ -231,6 +236,298 @@ body {
     box-shadow: 0 -1px var(--header-border-color) inset
   }
 }
+
+
+.SidebarMenu .Drawer__Content::before,
+.SidebarMenu .Drawer__Content::after {
+  background-image: none;
+}
+
+.SidebarMenu .Drawer__Footer::before {
+  background-image: none;
+}
+
+.Drawer__Header {
+  justify-content: center;
+}
+
+@media screen and (max-width: 640px) {
+  .Header__LogoImage {
+    max-width: 130px !important;
+  }
+}
+
+
+
+.DropdownMenu {
+  max-width: unset;
+  height: 100vh;
+  width: 25vw;
+  min-width: 450px;
+  top: 0;
+  left: -100%;
+  transition: left .8s ease;
+  background-color: #DADAD2;
+  padding-top: 100px;
+  padding-left: 25px;
+  z-index: 1;
+
+  &.open {
+    left: 0;
+  }
+
+  .Link {
+    text-transform: uppercase;
+  }
+
+  li.Linklist__Item {
+    margin-bottom: 2px;
+
+    a {
+      letter-spacing: 2px;
+      transition: text-decoration .5s ease;
+      font-size: 12px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  li.Linklist__Item:nth-child(1) {
+    margin-bottom: 30px;
+  }
+
+  li.Linklist__Item:nth-child(2) {
+    margin-bottom: 30px;
+  }
+
+  li.Linklist__Item:nth-child(9) {
+    margin-bottom: 30px;
+  }
+
+  li.Linklist__Item:nth-child(11) {
+    margin-bottom: 30px;
+
+  }
+
+  li.Linklist__Item:nth-child(12) {
+    a {
+      color: #636363;
+    }
+  }
+
+  li.Linklist__Item:nth-child(13) {
+    a {
+      color: #636363;
+    }
+  }
+
+
+}
+
+.DropdownMenu[aria-hidden=true] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.Header__MainNav.open {
+  a {
+    position: relative;
+    z-index: 3;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    span {
+      display: none;
+    }
+  }
+}
+
+.DropdownMenu::before {
+  content: none;
+}
+
+.social_links {
+  position: absolute;
+  bottom: 100px;
+
+  .Linklist__Item {
+    margin-bottom: 2px !important;
+  }
+}
+
+
+.SidebarMenu__Nav {
+  .Collapsible__Content {
+    .Collapsible {
+      margin-bottom: 2px;
+
+      a {
+        letter-spacing: 2px;
+        transition: text-decoration .5s ease;
+        font-size: 12px;
+        color: #000;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .Collapsible:nth-child(1) {
+      margin-bottom: 20px;
+    }
+
+    .Collapsible:nth-child(2) {
+      margin-bottom: 20px;
+    }
+
+    .Collapsible:nth-child(9) {
+      margin-bottom: 20px;
+    }
+
+    .Collapsible:nth-child(11) {
+      margin-bottom: 20px;
+
+    }
+
+    .Collapsible__Button {
+      padding: 0;
+    }
+
+
+    .Collapsible:nth-child(12) a {
+      color: #636363;
+    }
+
+    .Collapsible:nth-child(13) a {
+      color: #636363;
+
+    }
+
+
+
+
+
+
+  }
+
+
+
+
+
+}
+
+
+.SidebarMenu__Nav .Collapsible .Collapsible__Button:first-child:not(a) {
+  border-top: 1px solid #00000040;
+}
+
+
+.SidebarMenu__Nav .Collapsible:first-child {
+  border-bottom: none;
+}
+
+
+.social.Collapsible {
+  .Collapsible__Button {
+    border-top: none !important;
+  }
+
+  .Collapsible {
+    margin-bottom: 10px !important;
+  }
+}
+
+
+
+
+
+
+/*=====  End of Sidebar && header  ======*/
+
+
+
+/*=============================================
+=            image with text            =
+=============================================*/
+.img_custom {
+  margin-bottom: 50px;
+
+  .FlexboxIeFix {
+    max-width: 45vw;
+    margin: 0 auto;
+    flex-direction: column;
+  }
+
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+  }
+
+  span {
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+    font-family: MaisonNeueWEB-Book;
+    text-transform: uppercase;
+  }
+
+  @media screen and (min-width: 1140px) {
+    .ImageHero--large {
+      min-height: 440px;
+    }
+
+    .FlexboxIeFix {
+
+      min-width: 600px;
+
+    }
+
+  }
+
+  @media screen and (max-width: 1140px) {
+    .ImageHero--large {
+      min-height: 30vh;
+    }
+
+    .FlexboxIeFix {
+
+      min-width: 65vw;
+
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
+}
+
+/*=====  End of image with text  ======*/
+
+
+
 
 
 
@@ -717,7 +1014,7 @@ body {
 
 
 /*=============================================
-=            Story block three            =
+=            Story block three and four       =
 =============================================*/
 .story_block_three {
   background-repeat: no-repeat;
@@ -866,7 +1163,7 @@ body {
     position: absolute;
     width: 50%;
     height: 60%;
-    right: 16%;
+    right: 12%;
     z-index: 0;
     top: 50px;
 
@@ -877,7 +1174,7 @@ body {
   }
 
   .col-one {
-    flex-basis: 30%;
+    flex-basis: 40%;
 
 
   }
@@ -908,10 +1205,91 @@ body {
     }
   }
 
+  @media (max-width: 1430px) {
+    .third_image {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .rectangle {
+      display: none;
+    }
+
+    .col-one {
+      flex-basis: 100%;
+      margin-bottom: 150px;
+    }
+
+    .story-heading {
+      left: 50%;
+      width: unset;
+      transform: translateX(-50%);
+    }
+
+    .col-content .third_image {
+      display: block;
+      left: 30px;
+      bottom: -49px;
+      width: 30%;
+    }
+
+    .image {
+      position: absolute;
+      top: 20%;
+      right: 30px;
+      width: 61%;
+      display: block;
+    }
+
+    .circles {
+      position: absolute;
+      top: -140px;
+    }
+
+    .circle {
+      width: 50px;
+      height: 50px;
+    }
+
+    &.story-two {
+      padding: 180px 0 50px 0;
+    }
+
+    .mobile-dblock {
+      background-color: transparent !important;
+
+      &::before {
+        background-color: transparent;
+      }
+    }
+
+
+
+
+
+  }
+
+  @media (max-width: 800px) {
+    .image {
+      top: 55vw;
+
+    }
+  }
+
+
+
+
+
+
+
+
+
+
 }
 
 
-/*=====  End of Story block three  ======*/
+/*=====  End of Story block three and four  ======*/
 
 
 

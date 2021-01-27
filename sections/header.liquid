@@ -334,6 +334,13 @@ HEADER CONTENT
                         </li>
                       {%- endfor -%}
                     </ul>
+                    <ul class="Linklist social_links">
+                     {%- for links in linklists.social.links -%}
+                        <li class="Linklist__Item">
+                          <a href="{{ links.url }}" class="Link Link--secondary">{{ links.title | escape }}</a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
                   </div>
                 {%- endif -%}
               {%- endcapture -%}
@@ -342,9 +349,9 @@ HEADER CONTENT
                 <a href="{{ link.url }}" class="Heading u-h6">
                   {{- link.title | escape -}}
 
-                  {%- if use_mega_menu or menu_item_dropdown == blank -%}
+                
                     <span class="Header__LinkSpacer">{{ link.title | escape }}</span>
-                  {%- endif -%}
+                  
                 </a>
 
                 {{- menu_item_dropdown -}}

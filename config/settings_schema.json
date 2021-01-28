@@ -1,5 +1,4 @@
-[
-  {
+[{
     "name": "theme_info",
     "theme_name": "Prestige",
     "theme_author": "Maestrooo",
@@ -9,8 +8,7 @@
   },
   {
     "name": "Colors",
-    "settings": [
-      {
+    "settings": [{
         "type": "header",
         "content": "General"
       },
@@ -169,8 +167,7 @@
   },
   {
     "name": "Typography",
-    "settings": [
-      {
+    "settings": [{
         "type": "header",
         "content": "Headings"
       },
@@ -185,8 +182,7 @@
         "id": "heading_size",
         "label": "Size",
         "info": "All headings (small and large) will be adjusted.",
-        "options": [
-          {
+        "options": [{
             "value": "small",
             "label": "Small"
           },
@@ -221,7 +217,7 @@
         "type": "range",
         "id": "base_text_font_size",
         "label": "Base size",
-        "min": 13,
+        "min": 12,
         "max": 17,
         "unit": "px",
         "default": 14
@@ -230,8 +226,7 @@
   },
   {
     "name": "Animation",
-    "settings": [
-      {
+    "settings": [{
         "type": "checkbox",
         "id": "show_page_transition",
         "label": "Show page transition",
@@ -260,37 +255,33 @@
   },
   {
     "name": "Search",
-    "settings": [
-      {
-        "type": "select",
-        "id": "search_mode",
-        "label": "Search only...",
-        "options": [
-          {
-            "value": "product",
-            "label": "Products only"
-          },
-          {
-            "value": "product,page",
-            "label": "Products and pages"
-          },
-          {
-            "value": "product,article",
-            "label": "Products and articles"
-          },
-          {
-            "value": "product,article,page",
-            "label": "Products, articles and pages"
-          }
-        ],
-        "default": "product,article"
-      }
-    ]
+    "settings": [{
+      "type": "select",
+      "id": "search_mode",
+      "label": "Search only...",
+      "options": [{
+          "value": "product",
+          "label": "Products only"
+        },
+        {
+          "value": "product,page",
+          "label": "Products and pages"
+        },
+        {
+          "value": "product,article",
+          "label": "Products and articles"
+        },
+        {
+          "value": "product,article,page",
+          "label": "Products, articles and pages"
+        }
+      ],
+      "default": "product,article"
+    }]
   },
   {
     "name": "Products grid",
-    "settings": [
-      {
+    "settings": [{
         "type": "header",
         "content": "Grid"
       },
@@ -311,8 +302,7 @@
         "type": "select",
         "id": "product_info_alignment",
         "label": "Product info alignment",
-        "options": [
-          {
+        "options": [{
             "value": "left",
             "label": "Left"
           },
@@ -331,8 +321,7 @@
         "type": "select",
         "id": "product_image_size",
         "label": "Product image size",
-        "options": [
-          {
+        "options": [{
             "value": "natural",
             "label": "Natural"
           },
@@ -355,8 +344,7 @@
         "type": "select",
         "id": "product_list_horizontal_spacing",
         "label": "Horizontal spacing",
-        "options": [
-          {
+        "options": [{
             "value": "extra_small",
             "label": "Extra small"
           },
@@ -383,8 +371,7 @@
         "type": "select",
         "id": "product_list_vertical_spacing",
         "label": "Vertical spacing",
-        "options": [
-          {
+        "options": [{
             "value": "extra_small",
             "label": "Extra small"
           },
@@ -411,13 +398,11 @@
   },
   {
     "name": "Cart",
-    "settings": [
-      {
+    "settings": [{
         "type": "select",
         "id": "cart_type",
         "label": "Cart type",
-        "options": [
-          {
+        "options": [{
             "value": "drawer",
             "label": "Drawer"
           },
@@ -452,8 +437,7 @@
   },
   {
     "name": "Social media",
-    "settings": [
-      {
+    "settings": [{
         "type": "header",
         "content": "Accounts"
       },
@@ -527,13 +511,11 @@
   },
   {
     "name": "Favicon",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "favicon",
-        "label": "Image",
-        "info": "96 x 96px .png recommended"
-      }
-    ]
+    "settings": [{
+      "type": "image_picker",
+      "id": "favicon",
+      "label": "Image",
+      "info": "96 x 96px .png recommended"
+    }]
   }
 ]

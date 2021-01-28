@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // get flickity width
   function getFlickWidth() {
     if (window.innerWidth > 1300) {
-      const flickityDiv = document.querySelector(".flickity-slider"),
+      const flickityDiv = document.querySelector(".collection-list-custom .flickity-slider"),
         container = document.querySelector(".container_block_three")
-      if (flickityDiv) {
+      if (flickityDiv && document.body.classList.contains('template-index')) {
         let flickWidth = flickityDiv.getBoundingClientRect().left + 10
         container.style.margin = ` 0 ${flickWidth}px`
       }
@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //close menu
     function closeMenu() {
+      mainNav.classList.remove('open')
       links.forEach(link => {
         link.childNodes[2] ? link.childNodes[2].classList.remove('open') : null
       })
@@ -107,10 +108,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // close menu by clicking page
     mainDiv.onclick = () => {
-      mainNav.classList.remove('open')
       closeMenu()
     }
 
+  }
+
+  // product button observer
+  function atcObserver() {
+
+    const target = document.querySelector('[data-action="add-to-cart"]')
+    if (target) {
+      const arrow = target.querySelector('.button_arrow')
+      const config = {
+        attributes: false,
+        childList: true,
+        subtree: false
+      }
+      const callback = function (mutationsList, observer) {
+        for (let mutation of mutationsList) {
+          if (mutation.type === 'childList') {
+            observers.disconnect();
+            target.appendChild(arrow)
+            observers.observe(target, config);
+          }
+        }
+      }
+      const observers = new MutationObserver(callback);
+      observers.observe(target, config);
+    }
   }
 
 
@@ -119,7 +144,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
+  if (document.body.classList.contains('template-product')) {
+    atcObserver()
+  }
 
   sidebar()
   logoCopy()

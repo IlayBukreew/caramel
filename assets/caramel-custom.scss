@@ -713,6 +713,16 @@ body {
     }
   }
 
+
+
+  .Footer__Block:first-child {
+    margin-bottom: 0;
+  }
+
+  .Footer__Block:nth-child(2) {
+    margin-top: 0 !important;
+  }
+
   @media screen and (max-width: 1200px) {
     .Container-inner {
       flex-wrap: wrap;
@@ -731,7 +741,7 @@ body {
   }
 
   .Button {
-    padding: 12px 28px;
+    padding: 12px 10px;
   }
 
 
@@ -1364,7 +1374,6 @@ body {
   .product_back_button {
     font-family: MaisonNeueWEB-Book;
     font-size: 12px;
-    font-weight: bold;
     line-height: 1.17;
     letter-spacing: 2px;
 
@@ -1435,12 +1444,48 @@ body {
 
 
 
+  .size-guide {
+    h2 {
+      letter-spacing: 2px;
+      font-size: 12px;
+    }
+
+    p {
+      font-family: MaisonNeueWEB-Book;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+  }
 
 
+  .ProductMeta__ShareList {
+    display: inherit;
+  }
+
+  .ProductMeta__ShareButtons {
+    position: absolute;
+    bottom: 0;
+    left: -150px;
+
+    span {
+      font-family: MaisonNeueWEB-Book;
+    }
+  }
+
+  .Product__QuickNav {
+    display: block !important;
+  }
 
 
+  .u-h7 {
+    padding-left: 0;
+  }
 
-
+  @media screen and (min-width: 641px) {
+    .u-h7 {
+      font-size: 12px;
+    }
+  }
 
 
 
@@ -1472,7 +1517,38 @@ body {
     }
   }
 
+  @media (max-width: 800px) {
+    .Product__Slideshow {
+      padding: 0 15px;
+      margin-top: 100px;
 
+    }
+
+    .breadcrumbs__item,
+    .product_back_button {
+      display: none;
+    }
+
+
+    .Product__SlideshowMobileNav {
+      margin-top: -30px;
+    }
+
+    .Product__SlideshowNavArrow {
+      display: none;
+    }
+
+    .ProductMeta {
+      text-align: left;
+    }
+
+
+
+
+
+
+
+  }
 
 
 
@@ -1484,6 +1560,11 @@ body {
 
 
 .template-product {
+
+
+  #shopify-section-recently-viewed-products .Carousel__Cell:first-child {
+    margin-left: 5%;
+  }
 
   .SectionHeader__Heading {
     text-align: left;

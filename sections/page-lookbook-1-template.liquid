@@ -1,0 +1,334 @@
+<section data-section-type="lookbook" data-section-id="{{ section.id }}">
+  <div class="Container">
+    <div class="PageContent PageContent__Lookbook">
+      <div class="Lookbook-1">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'lookbook_block_1' -%}
+        	  <div id="Lookbook-Item-1" class="Lookbook__Item">
+                <a href="{{ collections[block.settings.lookbook_1_collection_1].url | default: "#" }}">
+                  <div class="Lookbook__Item__Image">
+                    <img src="{{ block.settings.lookbook_1_image_1 | img_url: '850x' }}">
+                  </div>
+                  <div class="Lookbook__Item__Text Lookbook__Justify">
+                    <p class="Lookbook__Item__Heading">{{ block.settings.lookbook_1_title_1 }}</p>
+                    <p class="Lookbook__Item__Sub-Heading">{{ block.settings.lookbook_1_description_1 }}</p>
+                  </div>
+                </a>
+        	  </div>
+        	  <div id="Lookbook-Item-2" class="Lookbook__Item Lookbook__Justify">
+                <a href="{{ collections[block.settings.lookbook_1_collection_2].url | default: "#" }}">
+                  <div class="Lookbook__Item__Image">
+                    <img src="{{ block.settings.lookbook_1_image_2 | img_url: '500x' }}">
+                  </div>
+                  <div class="Lookbook__Item__Text Lookbook__Justify Lookbook__LeftPadding">
+                    <p class="Lookbook__Item__Heading">{{ block.settings.lookbook_1_title_2 }}</p>
+                    <p class="Lookbook__Item__Sub-Heading">{{ block.settings.lookbook_1_description_2 }}</p>
+                  </div>
+                </a>
+              </div>
+            {%- when 'lookbook_block_2' -%}
+        	  <div id="Lookbook-Item-3" class="Lookbook__Item">
+                <a href="{{ collections[block.settings.lookbook_2_collection_1].url | default: "#" }}">
+                  <div class="Lookbook__Item__Image">
+                    <img src="{{ block.settings.lookbook_2_image_1 | img_url: '500x' }}">
+                  </div>
+                  <div class="Lookbook__Item__Text Lookbook__Justify">
+                    <p class="Lookbook__Item__Heading">{{ block.settings.lookbook_2_title_1 }}</p>
+                    <p class="Lookbook__Item__Sub-Heading">{{ block.settings.lookbook_2_description_1 }}</p>
+                  </div>
+                </a>
+              </div>
+        	  <div id="Lookbook-Item-4" class="Lookbook__Item Lookbook__Justify">
+                <a href="{{ collections[block.settings.lookbook_2_collection_2].url | default: "#" }}">
+                  <div class="Lookbook__Item__Image">
+                    <img src="{{ block.settings.lookbook_2_image_2 | img_url: '650x' }}">
+                  </div>
+                  <div class="Lookbook__Item__Text Lookbook__Justify">
+                    <p class="Lookbook__Item__Heading">{{ block.settings.lookbook_2_title_2 }}</p>
+                    <p class="Lookbook__Item__Sub-Heading">{{ block.settings.lookbook_2_description_2 }}</p>
+                  </div>
+                </a>
+        	  </div>
+        	  <div id="Lookbook-Item-5" class="Lookbook__Item">
+                <a href="{{ collections[block.settings.lookbook_2_collection_3].url | default: "#" }}">
+                  <div class="Lookbook__Item__Image">
+                    <img src="{{ block.settings.lookbook_2_image_3 | img_url: '650x' }}">
+                  </div>
+                  <div class="Lookbook__Item__Text Lookbook__Justify Lookbook__LeftPadding">
+                    <p class="Lookbook__Item__Heading">{{ block.settings.lookbook_2_title_3 }}</p>
+                    <p class="Lookbook__Item__Sub-Heading">{{ block.settings.lookbook_2_description_3 }}</p>
+                  </div>
+                </a>
+              </div>
+            {%- when 'lookbook_block_3' -%}
+        	  <div id="Lookbook-Item-6" class="Lookbook__Item">
+                <a href="{{ collections[block.settings.lookbook_3_collection_1].url | default: "#" }}">
+                  <div class="Lookbook__Item__Image">
+                    <img src="{{ block.settings.lookbook_3_image_1 | img_url: '650x' }}">
+                  </div>
+                  <div class="Lookbook__Item__Text Lookbook__Justify">
+                    <p class="Lookbook__Item__Heading">{{ block.settings.lookbook_3_title_1 }}</p>
+                    <p class="Lookbook__Item__Sub-Heading">{{ block.settings.lookbook_3_description_1 }}</p>
+                  </div>
+                </a>
+              </div>
+        	  <div id="Lookbook-Item-7" class="Lookbook__Item Lookbook__Justify">
+                <a href="{{ collections[block.settings.lookbook_3_collection_2].url | default: "#" }}">
+                  <div class="Lookbook__Item__Image">
+                    <img src="{{ block.settings.lookbook_3_image_2 | img_url: '500x' }}">
+                  </div>
+                  <div class="Lookbook__Item__Text Lookbook__Justify">
+                    <p class="Lookbook__Item__Heading">{{ block.settings.lookbook_3_title_2 }}</p>
+                    <p class="Lookbook__Item__Sub-Heading">{{ block.settings.lookbook_3_description_2 }}</p>
+                  </div>
+                </a>
+        	  </div>
+            {%- when 'lookbook_block_4' -%}
+        	  <div id="Lookbook-Item-8" class="Lookbook__Item">
+                <a href="{{ collections[block.settings.lookbook_4_collection_1].url | default: "#" }}">
+                  <div class="Lookbook__Item__Image">
+                    <img src="{{ block.settings.lookbook_4_image_1 | img_url: '500x' }}">
+                  </div>
+                  <div class="Lookbook__Item__Text Lookbook__Justify Lookbook__LeftPadding">
+                    <p class="Lookbook__Item__Heading">{{ block.settings.lookbook_4_title_1 }}</p>
+                    <p class="Lookbook__Item__Sub-Heading">{{ block.settings.lookbook_4_description_1 }}</p>
+                  </div>
+                </a>
+        	  </div>
+        	  <div id="Lookbook-Item-9" class="Lookbook__Item">
+                <a href="{{ collections[block.settings.lookbook_4_collection_2].url | default: "#" }}">
+                  <div class="Lookbook__Item__Image">
+                    <img src="{{ block.settings.lookbook_4_image_2 | img_url: '500x' }}">
+                  </div>
+                  <div class="Lookbook__Item__Text Lookbook__Justify">
+                    <p class="Lookbook__Item__Heading">{{ block.settings.lookbook_4_title_2 }}</p>
+                    <p class="Lookbook__Item__Sub-Heading">{{ block.settings.lookbook_4_description_2 }}</p>
+                  </div>
+                </a>
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Lookbook",
+    "settings": [],
+	"blocks": [
+      {
+		"type": "lookbook_block_1",
+		"name": "Lookbook block 1",
+		"settings": [
+		  {
+			"type": "collection",
+		    "id": "lookbook_1_collection_1",
+		    "label": "First collection"
+		  },
+		  {
+			"type": "image_picker",
+			"id": "lookbook_1_image_1",
+			"label": "First collection's image"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_1_title_1",
+			"label": "First collection's heading"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_1_description_1",
+			"label": "First collection's sub-heading"
+		  },
+		  {
+			"type": "collection",
+		    "id": "lookbook_1_collection_2",
+		    "label": "Second collection"
+		  },
+		  {
+			"type": "image_picker",
+			"id": "lookbook_1_image_2",
+			"label": "Second collection's image"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_1_title_2",
+			"label": "Second collection's heading"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_1_description_2",
+			"label": "Second collection's sub-heading"
+		  }
+		]
+      },
+	  {
+		"type": "lookbook_block_2",
+		"name": "Lookbook block 2",
+		"settings": [
+		  {
+			"type": "collection",
+		    "id": "lookbook_2_collection_1",
+		    "label": "Third collection"
+		  },
+		  {
+			"type": "image_picker",
+			"id": "lookbook_2_image_1",
+			"label": "Third collection's image"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_2_title_1",
+			"label": "Third collection's heading"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_2_description_1",
+			"label": "Third collection's sub-heading"
+		  },
+		  {
+			"type": "collection",
+		    "id": "lookbook_2_collection_2",
+		    "label": "Fourth collection"
+		  },
+		  {
+			"type": "image_picker",
+			"id": "lookbook_2_image_2",
+			"label": "Fourth collection's image"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_2_title_2",
+			"label": "Fourth collection's heading"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_2_description_2",
+			"label": "Fourth collection's sub-heading"
+		  },
+		  {
+			"type": "collection",
+		    "id": "lookbook_2_collection_3",
+		    "label": "Fifth collection"
+		  },
+		  {
+			"type": "image_picker",
+			"id": "lookbook_2_image_3",
+			"label": "Fifth collection's image"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_2_title_3",
+			"label": "Fifth collection's heading"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_2_description_3",
+			"label": "Fifth collection's sub-heading"
+		  }
+		]
+	  },
+      {
+		"type": "lookbook_block_3",
+		"name": "Lookbook block 3",
+		"settings": [
+		  {
+			"type": "collection",
+		    "id": "lookbook_3_collection_1",
+		    "label": "Sixth collection"
+		  },
+		  {
+			"type": "image_picker",
+			"id": "lookbook_3_image_1",
+			"label": "Sixth collection's image"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_3_title_1",
+			"label": "Sixth collection's heading"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_3_description_1",
+			"label": "Sixth collection's sub-heading"
+		  },
+		  {
+			"type": "collection",
+		    "id": "lookbook_3_collection_2",
+		    "label": "Seventh collection"
+		  },
+		  {
+			"type": "image_picker",
+			"id": "lookbook_3_image_2",
+			"label": "Seventh collection's image"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_3_title_2",
+			"label": "Seventh collection's heading"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_3_description_2",
+			"label": "Seventh collection's sub-heading"
+		  }
+		]
+      },
+	  {
+		"type": "lookbook_block_4",
+		"name": "Lookbook block 4",
+		"settings": [
+		  {
+			"type": "collection",
+		    "id": "lookbook_4_collection_1",
+		    "label": "Eighth collection"
+		  },
+		  {
+			"type": "image_picker",
+			"id": "lookbook_4_image_1",
+			"label": "Eighth collection's image"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_4_title_1",
+			"label": "Eighth collection's heading"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_4_description_1",
+			"label": "Eighth collection's sub-heading"
+		  },
+		  {
+			"type": "collection",
+		    "id": "lookbook_4_collection_2",
+		    "label": "Ninth collection"
+		  },
+		  {
+			"type": "image_picker",
+			"id": "lookbook_4_image_2",
+			"label": "Ninth collection's image"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_4_title_2",
+			"label": "Ninth collection's heading"
+		  },
+		  {
+			"type": "text",
+			"id": "lookbook_4_description_2",
+			"label": "Ninth collection's sub-heading"
+		  }
+		]
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

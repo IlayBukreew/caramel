@@ -1,12 +1,16 @@
-[{
+[
+  {
     "resource_type": "products",
-    "groups": [{
+    "groups": [
+      {
         "description": "Add up to three unique product tabs, that are unique to a given product. Make sure to include both the title and the content for each tab.",
         "name": "Custom product tabs",
         "namespace": "sf_product_tabs",
-        "sub_groups": [{
+        "sub_groups": [
+          {
             "name": "Tab 1",
-            "fields": [{
+            "fields": [
+              {
                 "type": "text",
                 "key": "tab_1_title",
                 "name": "Title",
@@ -21,7 +25,8 @@
           },
           {
             "name": "Tab 2",
-            "fields": [{
+            "fields": [
+              {
                 "type": "text",
                 "key": "tab_2_title",
                 "name": "Title",
@@ -36,7 +41,8 @@
           },
           {
             "name": "Tab 3",
-            "fields": [{
+            "fields": [
+              {
                 "type": "text",
                 "key": "tab_3_title",
                 "name": "Title",
@@ -55,7 +61,8 @@
         "description": "Choose up to 4 hand-picked related products.",
         "name": "Hand-picked related products",
         "namespace": "sf_related_products",
-        "fields": [{
+        "fields": [
+          {
             "type": "switch",
             "key": "enabled",
             "name": "Enable",
@@ -87,38 +94,41 @@
   },
   {
     "resource_type": "collections",
-    "groups": [{
-      "description": "Specify per-collection footer information",
-      "name": "Collection footer",
-      "namespace": "sf_collection_footer",
-      "fields": [{
-          "type": "switch",
-          "key": "enabled",
-          "name": "Enable",
-          "hint": "If checked, this will replace the general info."
-        },
-        {
-          "type": "image",
-          "key": "image",
-          "name": "Image",
-          "hint": "1500 x 500px jpg recommended"
-        },
-        {
-          "type": "color",
-          "key": "text_color",
-          "name": "Text"
-        },
-        {
-          "type": "text",
-          "key": "title",
-          "name": "Title"
-        },
-        {
-          "type": "rte",
-          "key": "content",
-          "name": "Content"
-        }
-      ]
-    }]
+    "groups": [
+      {
+        "description": "Specify per-collection footer information",
+        "name": "Collection footer",
+        "namespace": "sf_collection_footer",
+        "fields": [
+          {
+            "type": "switch",
+            "key": "enabled",
+            "name": "Enable",
+            "hint": "If checked, this will replace the general info."
+          },
+          {
+            "type": "image",
+            "key": "image",
+            "name": "Image",
+            "hint": "1500 x 500px jpg recommended"
+          },
+          {
+            "type": "color",
+            "key": "text_color",
+            "name": "Text"
+          },
+          {
+            "type": "text",
+            "key": "title",
+            "name": "Title"
+          },
+          {
+            "type": "rte",
+            "key": "content",
+            "name": "Content"
+          }
+        ]
+      }
+    ]
   }
 ]

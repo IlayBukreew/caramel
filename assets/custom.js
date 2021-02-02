@@ -97,11 +97,12 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     // listeners for links
     links.forEach(link => {
-      link.onclick = (e) => {
-        openMenu(e)
-      }
       link.onmouseenter = (e) => {
+        openMenu(e)
         switchMenu(e)
+      }
+      link.onmouseleave = () => {
+        closeMenu()
       }
     })
 
@@ -137,10 +138,23 @@ document.addEventListener("DOMContentLoaded", function () {
       observers.observe(target, config);
     }
   }
+  // macOS fix
+  function macFix() {
+    const arrows = document.querySelectorAll('.Button.Button--primary span')
+    arrows.forEach(arrow => {
+      arrow.style.position = 'relative'
+      arrow.style.top = '3px'
+    })
+    console.log(arrows)
+  }
 
 
 
 
+
+  if (navigator.platform == 'MacIntel') {
+    macFix()
+  }
 
 
 

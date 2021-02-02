@@ -1,13 +1,14 @@
 <section class="category-page">
   <div class="container">
+  <h2>{{collection.title | upcase }} &mdash; CATEGORY</h2>
     <div class="categories">
 
       {% for block in section.blocks %}
-      {% assign collection = block.settings.collector %}
+      {% assign subcategory = collections[block.settings.collector] %}
         <div class="category">
-         <a href="{{ collection.url }}">
-            <img src="{{ collection.featured_image | img_url }}" alt="">
-            <h2>{{collection.title}}</h2>
+         <a href="{{ subcategory.url }}">
+            <img src="{{ subcategory.image | img_url: 'original' }}" alt="">
+            <h2>{{subcategory.title}}</h2>
          </a>
         </div>
       {% endfor %}
@@ -17,21 +18,21 @@
 </section>
 {% schema %}
 {
-"name": "Categories page section",
-"class": "shopify-section--bordered",
-"blocks":[
-{
-"type": "subcategory",
-"name": "Subcategory",
-"settings":[
-  {
-    "type": "collection",
-    "id": "collector",
-    "label": "Collection",
-    "info": "Choose collection for subcategory"
-  }
-]
-}
-]
-}
+  "name": "Categories page section",
+  "class": "shopify-section--bordered",
+  "blocks":[
+    {
+      "type": "text",
+      "name": "Subcategory",
+      "settings":[
+        {
+          "type": "collection",
+          "id": "collector",
+          "label": "Collection",
+          "info": "Choose collection for subcategory"
+        }
+      ]
+    }
+  ]
+} 
 {% endschema %}

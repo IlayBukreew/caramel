@@ -3,9 +3,12 @@
 	<div class="content">
 		<div class="col-one">
 			<div class="col-content">
-				<img src="{{ section.settings.main_img | img_url: 'original' }}">
+				{%- render 'image', image: section.settings.main_img -%}
 				<a class="Form__Submit Button Button--primary"
-					href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}<span>→</span></a>
+					href="{{ section.settings.btn_link }}">
+					{{ section.settings.btn_text }}
+					<span>→</span>
+				</a>
 			</div>
 		</div>
 		<div class="col-two">

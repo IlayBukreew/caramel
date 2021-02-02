@@ -5,7 +5,7 @@
 			<div class="col-content">
 				<h3 class="story-heading"><span>Craft —</span> Pattern </h3>
 				{%if section.settings.main_img %}
-				<img src="{{ section.settings.main_img | img_url: 'original' }}">
+					{%- render 'image', image: section.settings.main_img -%}
 				{% endif %}
 
 				<a class="Form__Submit Button Button--primary"
@@ -19,7 +19,7 @@
 				<h3>{{section.settings.image_heading}}</h3>
 				<p>{{ section.settings.image_text }}</p>
 				{%if section.settings.image_2 %}
-				<img src="{{ section.settings.image_2 | img_url: 'large' }}" alt="">
+					{%- render 'image', image: section.settings.image_2 -%}
 				{% endif %}
 			</div>
 			<a class=" mobile-dblock Form__Submit Button Button--primary"

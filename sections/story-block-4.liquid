@@ -5,10 +5,12 @@
     <div class="col-one">
       <div class="col-content">
         {%if section.settings.image_3 %}
-          <img class="third_image" src="{{ section.settings.image_3 | img_url: 'large' }}">
+        <div class="image_third">
+          {%- render 'image', image: section.settings.image_3 -%}
+        </div>
         {% endif %}
         {%if section.settings.main_img %}
-          <img src="{{ section.settings.main_img | img_url: 'x1024' }}">
+          {%- render 'image', image: section.settings.main_img -%}
         {% endif %}
 
         <a class="Form__Submit Button Button--primary"
@@ -25,7 +27,7 @@
       </div>
       <div class="image">
         {%if section.settings.image_2 %}
-        <img src="{{ section.settings.image_2 | img_url: 'large' }}" alt="">
+        {%- render 'image', image: section.settings.image_2 -%}
         {% endif %}
       </div>
       <a class=" mobile-dblock Form__Submit Button Button--primary"

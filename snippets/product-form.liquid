@@ -45,7 +45,67 @@ for size, we use it to display a size chart (if applicable)
 
           {%- if color_label contains downcase_option and section.settings.show_color_swatch -%}
             <ul class="ColorSwatchList HorizontalList HorizontalList--spacingTight">
-              {%- for value in option.values -%}
+
+            <div class="color_pro_items">
+
+    <div class="color_variants">
+
+        {% assign title = product.title | split: "-" | first  %}
+
+                {% paginate collections['all'].products by 999 %}
+
+                    {% for product_color in collections['all'].products %}
+      				{% assign product_color_title = product_color.title | split: "-" | first %}
+
+                        {% if product_color_title == title %}
+
+                            <a 
+                            {% if product_color.id == product.id %} class="selected_pro_img" {% endif %} 
+                            style="background-image: url({{ product_color.featured_image | img_url: '300x' }});" 
+                            href="{{ product_color.url }}">
+                            </a>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                {% endpaginate %}
+
+
+    </div>
+
+</div>
+
+<style>
+
+.color_pro_items .color_variants img {
+      max-width: 100px;
+    padding: 5px;
+    
+   
+}
+.color_variants a {
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	background-position: 50% 50%;
+  background-repeat: no-repeat;
+  border-radius: 50px;
+  margin: 1px;
+  border: 2px solid #fff;
+ 	box-shadow: 0 0 0 #000;
+  transition: box-shadow .5s ease;
+}
+.color_variants a:hover {
+  	box-shadow: 0 0 3px #000;
+}
+
+.selected_pro_img {
+  box-shadow: 0 0 3px #000 !important;
+}
+
+</style>
+              {% comment %} {%- for value in option.values -%}
                 {%- assign downcase_value = value | downcase -%}
 
                 <li class="HorizontalList__Item">
@@ -57,7 +117,7 @@ for size, we use it to display a size chart (if applicable)
                     <span class="u-visually-hidden">{{ value }}</span>
                   </label>
                 </li>
-              {%- endfor -%}
+              {%- endfor -%} {% endcomment %}
             </ul>
           {%- elsif section.settings.selector_mode == 'block' -%}
             <ul class="SizeSwatchList HorizontalList HorizontalList--spacingTight">

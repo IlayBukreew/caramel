@@ -2,7 +2,18 @@
   {%- capture mobile_size -%}750x{% if section.settings.image.height >= 960 %}960{% else %}{{ section.settings.image.height }}{% endif %}{%- endcapture -%}
 
   <div class="FlexboxIeFix">
-    <div class="ImageHero {% if section.settings.section_size != 'normal' %}ImageHero--{{ section.settings.section_size }}{% endif %}" {% if section.settings.image %}style="background: url({{ section.settings.image | img_url: '1x1' }})"{% endif %}>
+
+    <div class="video_wrapper ImageHero {% if section.settings.section_size != 'normal' %}ImageHero--{{ section.settings.section_size }}{% endif %}" {% if section.settings.image %}style="background: url({{ section.settings.image | img_url: '1x1' }})"{% endif %}>
+{% if section.settings.video != blank %}
+{% assign videosrc = section.settings.video %}
+  <video src="{{ videosrc | file_url }}" preload="auto" autoplay loop muted></video>
+  <style>
+    #shopify-section-1610358551e588984e .grid_item {
+      	position: absolute;
+        display: grid;
+    }
+  </style>
+{% else %}
       <div class="ImageHero__ImageWrapper">
         <div class="ImageHero__Image {% if section.settings.overlay_opacity > 0 %}ImageHero__ImageWrapper--hasOverlay{% endif %} Image--lazyLoad Image--zoomOut"
              data-optimumx="1.4"
@@ -20,8 +31,9 @@
           </div>
         {%- endunless -%}
       </div>
+{% endif %}
       {%- if section.settings.activate_menu -%}
-        <div class="ImageHero__ContentOverlay">
+        <div class="ImageHero__ContentOverlay grid_item">
          {% for link in linklists.main-menu.links %}
              <a class="banner-link" href="{{ link.url }}">{{ link.title }}</a>
          {% endfor %}
@@ -29,6 +41,7 @@
      
       {%- endif -%}   
     </div>
+    
      {%- if section.settings.subheading != blank or section.settings.title != blank or section.settings.content != blank -%}
         <div class="ImageHero__ContentOverlay">
           {%- if section.settings.subheading != blank or section.settings.title != blank -%}
@@ -94,6 +107,12 @@
       "id": "activate_menu",
       "label": "Show menu over image",
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "video",
+      "label": "Video background",
+      "info": "Upload video to files and copy name to this field, e.g. 'video.mp4' [Upload file](/admin/settings/files)"
     },
     {
       "type": "image_picker",

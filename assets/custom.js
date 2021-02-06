@@ -151,7 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
   if (navigator.platform == 'MacIntel') {
     macFix()
   }

@@ -63,7 +63,7 @@ body {
   }
 
   .ImageHero--large {
-    width: 70%;
+    width: 69%;
     margin: 0 auto;
   }
 
@@ -786,6 +786,17 @@ body {
 /*=============================================
 =            Story blocks            =
 =============================================*/
+.video_wrapper {
+  video {
+    height: auto;
+    max-height: 100%;
+
+    @media screen and (min-width: 1875px) {
+      width: 100%;
+    }
+  }
+}
+
 .wrapper-huyaper {
   height: 300px;
 }
@@ -1045,6 +1056,7 @@ body {
 
 
 }
+
 
 /*=====  End of Story blocks  ======*/
 
@@ -1407,7 +1419,7 @@ body {
 
   .ProductMeta__Description {
     margin: 0;
-    padding-top: 50px;
+    padding-top: 15px;
     border-top: none;
     font-family: MaisonNeueWEB-Book;
     line-height: 1.33;
@@ -1586,6 +1598,16 @@ body {
 
 
 .template-product {
+  .Product__QuickNav {
+    .Product__Tabs {
+      margin: 10px 0;
+
+    }
+
+    .Collapsible--large .Collapsible__Button {
+      padding: 10px 0;
+    }
+  }
 
 
   #shopify-section-recently-viewed-products .Carousel__Cell:first-child {
@@ -1801,17 +1823,17 @@ body {
   }
 }
 
-.Lookbook-1 { 
+.Lookbook-1 {
   .Lookbook__Item {
     margin: 15px 0 20px 0;
   }
-  
+
   .Lookbook__Item__Text {
     margin-top: 16px;
   }
-  
+
   p {
-	margin: 2px 0 0 0;
+    margin: 2px 0 0 0;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: normal;
@@ -1820,7 +1842,7 @@ body {
     line-height: 1.33;
     letter-spacing: 1.5px;
     text-align: center;
-    
+
     &.Lookbook__Item__Heading {
       text-shadow: 0px 0px 1px black;
       line-height: 1.5;
@@ -1835,7 +1857,7 @@ body {
     grid-template-columns: 305px auto 305px;
     grid-template-rows: auto 455px 175px 300px 510px auto;
     column-gap: 20px;
-    
+
     grid-template-areas:
       "item1 item1 item2"
       "item3 item4 item4"
@@ -1843,17 +1865,17 @@ body {
       "item6 item6 item5"
       "item6 item6 item7"
       "item8 item9 item9";
-    
+
     .Lookbook__Item {
       max-width: 100%;
       width: fit-content;
       width: -moz-fit-content;
       width: -webkit-fit-content;
-      
+
       &#Lookbook-Item-1 {
         grid-area: item1;
         margin-bottom: 75px;
-        
+
         .Lookbook__Item__Image {
           max-width: 830px;
         }
@@ -1863,7 +1885,7 @@ body {
         grid-area: item2;
         margin-bottom: 75px;
         margin-right: -52px;
-        
+
         .Lookbook__Item__Image {
           max-width: 200px;
         }
@@ -1871,7 +1893,7 @@ body {
 
       &#Lookbook-Item-3 {
         grid-area: item3;
-        
+
         .Lookbook__Item__Image {
           max-width: 305px;
         }
@@ -1879,15 +1901,15 @@ body {
 
       &#Lookbook-Item-4 {
         grid-area: item4;
-        
+
         .Lookbook__Item__Image {
           max-width: 515px;
         }
       }
-      
+
       &#Lookbook-Item-5 {
         grid-area: item5;
-        
+
         .Lookbook__Item__Image {
           max-width: 305px;
         }
@@ -1895,50 +1917,50 @@ body {
 
       &#Lookbook-Item-6 {
         grid-area: item6;
-        
+
         .Lookbook__Item__Image {
           max-width: 620px;
         }
       }
-      
+
       &#Lookbook-Item-7 {
         grid-area: item7;
-        
+
         .Lookbook__Item__Image {
           max-width: 305px;
         }
       }
-      
+
       &#Lookbook-Item-8 {
         grid-area: item8;
-        
+
         .Lookbook__Item__Image {
           max-width: 200px;
         }
       }
-      
+
       &#Lookbook-Item-9 {
         grid-area: item9;
         margin-left: 130px;
-        
+
         .Lookbook__Item__Image {
           max-width: 410px;
         }
       }
     }
-    
+
     .Lookbook__Justify {
       justify-self: end;
-      
+
       &.Lookbook__Item__Text:not(.Lookbook__LeftPadding) {
         padding-left: 20px;
       }
     }
-    
+
     .Lookbook__LeftPadding {
       padding-left: 50px;
     }
-    
+
     .Lookbook__Item__Text {
       width: fit-content;
       width: -moz-fit-content;
@@ -1952,11 +1974,11 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    
+
     .Lookbook__Item__Text {
       width: 100%;
     }
-    
+
     .Lookbook__Item__Image {
       text-align: center;
     }
@@ -1971,17 +1993,17 @@ body {
 =            Section Lookbook 2             =
 =============================================*/
 
-.Lookbook-2 { 
+.Lookbook-2 {
   .Lookbook-2__Item {
     margin: 0 10px 20px 10px;
   }
-  
+
   .Lookbook-2__Item__Text {
     margin-top: 16px;
   }
-  
+
   p {
-	margin: 2px 0 0 0;
+    margin: 2px 0 0 0;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: normal;
@@ -1990,7 +2012,7 @@ body {
     line-height: 1.33;
     letter-spacing: 1.5px;
     text-align: center;
-    
+
     &.Lookbook-2__Item__Heading {
       text-shadow: 0px 0px 1px black;
       line-height: 1.5;
@@ -2000,34 +2022,34 @@ body {
 }
 
 @media screen and (min-width: 900px) {
-  .Lookbook-2 > .Lookbook-2-Container {
+  .Lookbook-2>.Lookbook-2-Container {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
-    
+
     .Lookbook-2__Item__Image {
       max-width: 360px;
       max-height: 510px;
-      overflow: hidden; 
+      overflow: hidden;
     }
   }
-  
-  .Lookbook-2 > .Lookbook-2-Container:not(:first-child) {
+
+  .Lookbook-2>.Lookbook-2-Container:not(:first-child) {
     margin-top: 80px;
   }
-  
+
 }
 
 @media screen and (max-width: 899px) {
-  .Lookbook-2 > .Lookbook-2-Container {
+  .Lookbook-2>.Lookbook-2-Container {
     display: flex;
     align-items: center;
     flex-direction: column;
-    
+
     .Lookbook-2__Item__Text {
       width: 100%;
     }
-    
+
     .Lookbook-2__Item__Image {
       text-align: center;
     }

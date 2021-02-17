@@ -1303,6 +1303,23 @@ body {
     }
   }
 
+  .col-one .CollectionItem.Carousel__Cell[data-slide-index] .wrapper-huyaper:not(.image_third .wrapper-huyaper) {
+    height: 700px;
+    width: 550px;
+  }
+
+  .image_third {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: calc(58% + 2vw);
+
+    .wrapper-huyaper {
+      width: 200px;
+      height: 275px;
+    }
+  }
+
   @media (max-width: 1430px) {
     .third_image {
       display: none;

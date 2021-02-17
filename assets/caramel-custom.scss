@@ -224,6 +224,14 @@ body {
 =============================================*/
 
 
+#shopify-section-header {
+  z-index: 100;
+}
+
+#sidebar-menu {
+  z-index: 101;
+}
+
 
 .supports-sticky .Search[aria-hidden="true"]+.Header--transparent {
   box-shadow: none !important;
@@ -977,7 +985,7 @@ body {
       }
     }
 
-    .col-content a:not(.ProductItem__ImageWrapper) {
+    .col-content a:not(.ProductItem__ImageWrapper, .CollectionItem) {
       display: none;
     }
   }
@@ -985,12 +993,40 @@ body {
 }
 
 .story-one {
+  @media screen and (max-width: 1200px) {
+    padding-top: 50px;
+
+  }
+
   .col-content {
     min-width: 80% !important;
   }
 
   .wrapper-huyaper {
     height: 400px;
+  }
+
+
+  @media (max-width: 1200px) {
+    .story-heading {
+      top: 30px;
+    }
+
+    .col-one {
+      flex-basis: 100%;
+      align-items: center;
+      margin-top: 80px;
+
+      .col-content {
+        padding: 0;
+      }
+    }
+
+    .wrapper-huyaper {
+      height: 200px;
+    }
+
+
   }
 }
 
@@ -1044,6 +1080,8 @@ body {
   }
 
   @media screen and (max-width:1200px) {
+    padding-top: 30px;
+
     .story-heading {
       transform: translateX(0);
       text-align: center;
@@ -1052,18 +1090,23 @@ body {
     .image {
       display: none;
     }
-  }
 
+    .wrapper-huyaper {
+      height: 200px;
+    }
+
+
+
+
+  }
 
 }
 
 
-/*=====  End of Story blocks  ======*/
 
 
-/*=============================================
-=            Story block three and four       =
-=============================================*/
+
+
 .story_block_three {
   background-repeat: no-repeat;
   background-size: cover;
@@ -1081,19 +1124,26 @@ body {
 
   .ProductItem__Vendor {
     font-family: MaisonNeueWEB-Book;
+
   }
 
+  .swiper-button-next {
+    top: 120px !important;
+  }
 
+  @media (max-width: 1200px) {
+    padding-top: 50px;
 
-
-
-
-
-
-
-
-
+    .swiper-button-next {
+      top: 55px !important;
+    }
+  }
 }
+
+
+/*----------  story blocks 3 & 4  ----------*/
+
+
 
 .container_block_three {
   display: flex;
@@ -1338,7 +1388,7 @@ body {
 
 
 /*=====  End of Story block three and four  ======*/
-
+/*=====  End of Story blocks  ======*/
 
 
 
@@ -2057,3 +2107,49 @@ body {
 }
 
 /*=====  End of Lookbook 2 section  ======*/
+
+
+/*=============================================
+=            homepage sliders            =
+=============================================*/
+.template-index {
+  .swiper-slide {
+    opacity: 0 !important;
+    transition: opacity .5s ease;
+    pointer-events: none;
+
+
+
+  }
+
+  .swiper-slide-active {
+    pointer-events: all;
+    opacity: 1 !important;
+  }
+
+  .swiper-button-next {
+    right: 0;
+    top: 30px;
+    background: none;
+    color: #0b0000;
+    width: 50px;
+    height: 50px;
+    border: 1px solid;
+    border-right: none;
+
+    &:hover {
+      border-style: inset;
+    }
+  }
+
+  .swiper-button-prev {
+    display: none;
+  }
+
+  .swiper-button-next:after {
+    content: '→';
+    font-size: 30px;
+  }
+}
+
+/*=====  End of homepage sliders  ======*/

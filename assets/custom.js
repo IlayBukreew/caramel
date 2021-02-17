@@ -41,62 +41,66 @@ document.addEventListener("DOMContentLoaded", function () {
   // get flickity width
   function getFlickWidth() {
     if (window.innerWidth > 1300) {
-      const flickityDiv = document.querySelector(".collection-list-custom .flickity-slider"),
-        container = document.querySelector(".container_block_three")
-      if (flickityDiv && document.body.classList.contains('template-index')) {
+      const flickityDiv = document.querySelector(".story_block_three .flickity-slider"),
+        containers = document.querySelectorAll(".container_block_three")
+
+      if (flickityDiv && document.body.classList.contains("template-index")) {
         let flickWidth = flickityDiv.getBoundingClientRect().left + 10
-        container.style.margin = ` 0 ${flickWidth}px`
+        containers.forEach(container => {
+          container.style.margin = ` 0 ${flickWidth}px`
+        })
       }
     }
   }
   // copy logo to mobile sidebar
   function logoCopy() {
-    const divToInsert = document.getElementById('mobile_menu_logo'),
-      logo = document.querySelector('.Header__Wrapper .Header__LogoImage').cloneNode()
+    const divToInsert = document.getElementById("mobile_menu_logo"),
+      logo = document
+      .querySelector(".Header__Wrapper .Header__LogoImage")
+      .cloneNode()
     divToInsert.appendChild(logo)
   }
   // header sidebar
   function sidebar() {
-    const links = document.querySelectorAll('.Header__Wrapper .HorizontalList__Item'),
-      mainDiv = document.getElementById('main'),
-      dropdownLinks = document.querySelectorAll('.DropdownMenu .Link'),
-      mainNav = document.querySelector('.Header__MainNav')
+    const links = document.querySelectorAll(".Header__Wrapper .HorizontalList__Item"),
+      mainDiv = document.getElementById("main"),
+      dropdownLinks = document.querySelectorAll(".DropdownMenu .Link"),
+      mainNav = document.querySelector(".Header__MainNav")
 
     //close menu
     function closeMenu() {
-      mainNav.classList.remove('open')
-      links.forEach(link => {
-        link.childNodes[2] ? link.childNodes[2].classList.remove('open') : null
+      mainNav.classList.remove("open")
+      links.forEach((link) => {
+        link.childNodes[2] ? link.childNodes[2].classList.remove("open") : null
       })
     }
     // open menu
     function openMenu(event) {
-      links.forEach(link => {
-        if (link.childNodes[1].getAttribute('href') != '/') {
+      links.forEach((link) => {
+        if (link.childNodes[1].getAttribute("href") != "/") {
           event.preventDefault()
-          link.childNodes[2] ? link.childNodes[2].classList.add('open') : null
-          mainNav.classList.add('open')
+          link.childNodes[2] ? link.childNodes[2].classList.add("open") : null
+          mainNav.classList.add("open")
         }
-
       })
-      event.target.nextElementSibling ? event.target.nextElementSibling.style.zIndex = 2 : null
+      event.target.nextElementSibling ? (event.target.nextElementSibling.style.zIndex = 2) : null
     }
-    // switching between menus 
+    // switching between menus
     function switchMenu(event) {
-      links.forEach(link => {
-        link.childNodes[2] ? link.childNodes[2].style.zIndex = '1' : null
+      links.forEach((link) => {
+        link.childNodes[2] ? (link.childNodes[2].style.zIndex = "1") : null
       })
-      event.target.childNodes[2] ? event.target.childNodes[2].style.zIndex = '2' : null
+      event.target.childNodes[2] ? (event.target.childNodes[2].style.zIndex = "2") : null
     }
 
     // fix link functionality
-    dropdownLinks.forEach(link => {
+    dropdownLinks.forEach((link) => {
       link.onclick = () => {
-        window.location = link.getAttribute('href')
+        window.location = link.getAttribute("href")
       }
     })
     // listeners for links
-    links.forEach(link => {
+    links.forEach((link) => {
       link.onmouseenter = (e) => {
         openMenu(e)
         switchMenu(e)
@@ -106,58 +110,53 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     })
 
-
     // close menu by clicking page
     mainDiv.onclick = () => {
       closeMenu()
     }
-
   }
 
   // product button observer
   function atcObserver() {
-
     const target = document.querySelector('[data-action="add-to-cart"]')
     if (target) {
-      const arrow = target.querySelector('.button_arrow')
+      const arrow = target.querySelector(".button_arrow")
       const config = {
         attributes: false,
         childList: true,
-        subtree: false
+        subtree: false,
       }
       const callback = function (mutationsList, observer) {
         for (let mutation of mutationsList) {
-          if (mutation.type === 'childList') {
-            observers.disconnect();
+          if (mutation.type === "childList") {
+            observers.disconnect()
             target.appendChild(arrow)
-            observers.observe(target, config);
+            observers.observe(target, config)
           }
         }
       }
-      const observers = new MutationObserver(callback);
-      observers.observe(target, config);
+      const observers = new MutationObserver(callback)
+      observers.observe(target, config)
     }
   }
   // macOS fix
   function macFix() {
-    const arrows = document.querySelectorAll('.Button.Button--primary span')
-    arrows.forEach(arrow => {
-      arrow.style.position = 'relative'
-      arrow.style.top = '3px'
+    const arrows = document.querySelectorAll(".Button.Button--primary span")
+    arrows.forEach((arrow) => {
+      arrow.style.position = "relative"
+      arrow.style.top = "3px"
     })
     console.log(arrows)
   }
 
 
 
-
-  if (navigator.platform == 'MacIntel') {
+  //mac os fix
+  if (navigator.platform == "MacIntel") {
     macFix()
   }
-
-
-
-  if (document.body.classList.contains('template-product')) {
+  // product atc button fix
+  if (document.body.classList.contains("template-product")) {
     atcObserver()
   }
 

@@ -1,36 +1,81 @@
 <section class="story-one" id={{section.id}}>
-	<h3 class="story-heading"><span>Craft —</span> Pattern </h3>
-	<div class="content">
-		<div class="col-one">
-			<div class="col-content">
-				{%- render 'image', image: section.settings.main_img -%}
-				<a class="Form__Submit Button Button--primary"
-					href="{{ section.settings.btn_link }}">
-					{{ section.settings.btn_text }}
-					<span>→</span>
-				</a>
+
+<!-- Slider main container -->
+<div class="swiper-container">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+	{% for block in section.blocks %}
+	{% assign slide = block.settings %}
+    <div class="swiper-slide">
+		<h3 class="story-heading"><span>Craft —</span> Pattern </h3>
+		<div class="content">
+			<div class="col-one">
+				<div class="col-content">
+					{%- render 'image', image: slide.main_img -%}
+					<a class="Form__Submit Button Button--primary"
+						href="{{ slide.btn_link }}">
+						{{ slide.btn_text }}
+						<span>→</span>
+					</a>
+				</div>
 			</div>
-		</div>
-		<div class="col-two">
-			<h2>{{ section.settings.heading }}</h2>
-			<p>{{ section.settings.textarea }}</p>
-			<div class="circles">
-				<img src="{{ section.settings.img_1 | img_url: 'medium' }}" alt="">
-				<img src="{{ section.settings.img_2 | img_url: 'medium' }}" alt="">
-				<img src="{{ section.settings.img_3 | img_url: 'medium' }}" alt="">
+			<div class="col-two">
+				<h2>{{ slide.heading }}</h2>
+				<p>{{ slide.textarea }}</p>
+				<div class="circles">
+					<img src="{{ slide.img_1 | img_url: 'medium' }}" alt="">
+					<img src="{{ slide.img_2 | img_url: 'medium' }}" alt="">
+					<img src="{{ slide.img_3 | img_url: 'medium' }}" alt="">
+				</div>
+				<a class=" mobile-dblock Form__Submit Button Button--primary"
+					href="{{ slide.btn_link }}">{{ slide.btn_text }}<span>→</span></a>
 			</div>
-			<a class=" mobile-dblock Form__Submit Button Button--primary"
-				href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}<span>→</span></a>
 		</div>
 	</div>
+	{% endfor %}
+
+  </div>
+
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+</div>
+
+
+
 </section>
+
+<script>
+ function sliderInit() {
+    const swiper = new Swiper('.swiper-container', {
+      loop: true,
+      effect: 'fade',
+      allowTouchMove: false,
+      // Navigation arrows
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      }
+    })
+    if (swiper.slides.length <= 3) {
+      swiper.navigation.nextEl.style.display = 'none'
+    }
+  }
+	sliderInit()
+
+</script>
 
 
 
 {% schema %}
 {
 "name": "Story block",
-"settings": [
+"blocks":[
+	{
+		"type": "slider",
+		"name": "Slide",
+		"settings": [
 
 
 {
@@ -76,7 +121,10 @@
 "label": "Circle 3 image"
 }
 
-],
+]
+	 }
+ ],
+
 "presets": [
 {
 "category": "Custom",

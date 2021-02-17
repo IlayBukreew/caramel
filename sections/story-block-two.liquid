@@ -1,39 +1,84 @@
 <section class="story-two" id="section-{{section.id}}">
 
-	<div class="content">
+
+<!-- Slider main container -->
+<div class="swiper-container-two">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+	{% for block in section.blocks %}
+	{% assign slide = block.settings %}
+    <div class="swiper-slide">
+		<div class="content">
 		<div class="col-one">
 			<div class="col-content">
 				<h3 class="story-heading"><span>Craft —</span> Pattern </h3>
-				{%if section.settings.main_img %}
-					{%- render 'image', image: section.settings.main_img -%}
+				{%if slide.main_img %}
+					{%- render 'image', image: slide.main_img -%}
 				{% endif %}
 
 				<a class="Form__Submit Button Button--primary"
-					href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}<span>→</span></a>
+					href="{{ slide.btn_link }}">{{ slide.btn_text }}<span>→</span></a>
 			</div>
 		</div>
 		<div class="col-two">
-			<h2>{{ section.settings.heading }}</h2>
-			<p>{{ section.settings.textarea }}</p>
+			<h2>{{ slide.heading }}</h2>
+			<p>{{ slide.textarea }}</p>
 			<div class="image">
-				<h3>{{section.settings.image_heading}}</h3>
-				<p>{{ section.settings.image_text }}</p>
-				{%if section.settings.image_2 %}
-					{%- render 'image', image: section.settings.image_2 -%}
+				<h3>{{slide.image_heading}}</h3>
+				<p>{{ slide.image_text }}</p>
+				{%if slide.image_2 %}
+					{%- render 'image', image: slide.image_2 -%}
 				{% endif %}
 			</div>
 			<a class=" mobile-dblock Form__Submit Button Button--primary"
-				href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}<span>→</span></a>
+				href="{{ slide.btn_link }}">{{ slide.btn_text }}<span>→</span></a>
 		</div>
 	</div>
+
+	</div>
+	{% endfor %}
+
+  </div>
+
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+</div>
+	
+
 </section>
+
+<script>
+ function sliderInit() {
+    const swiper = new Swiper('.swiper-container-two', {
+      loop: true,
+      effect: 'fade',
+      allowTouchMove: false,
+      // Navigation arrows
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    })
+    if (swiper.slides.length <= 3) {
+      swiper.navigation.nextEl.style.display = 'none'
+    }
+  }
+	sliderInit()
+
+</script>
 
 
 
 {% schema %}
 {
 "name": "Story block",
-"settings": [
+"blocks":[
+	{
+		"type": "slide",
+		"name": "Slide",
+		"settings": [
 
 
 {
@@ -81,7 +126,10 @@
 "label": "Second image"
 }
 
-],
+]
+	 }
+ ],
+
 "presets": [
 {
 "category": "Custom",

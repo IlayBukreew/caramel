@@ -1787,6 +1787,12 @@ body {
     }
   }
 
+
+
+
+
+
+
   @media screen and (max-width: 1200px) {
     .categories {
       margin-top: 0;
@@ -1813,6 +1819,20 @@ body {
 
 
 
+}
+
+
+.template-collection {
+  .CollectionInner__Sidebar {
+    top: 0;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    background: #dadad1;
+    height: 100vh;
+    width: 20vw;
+    padding: 150px 50px 50px;
+  }
 }
 
 /*=====  End of Category pages  ======*/

@@ -3,7 +3,13 @@
 {%- assign pinterest_description = article.description | strip_html | truncatewords: 15 | url_param_escape -%}
 {%- assign pinterest_image = article.image | img_url: '750x' | prepend: 'https:' -%}
 
-<article class="Article" data-section-id="{{ section.id }}" data-section-type="article">
+{% comment %}
+   These two lines are needed, so the extra content handling will be excluded from rendering
+{% endcomment %}
+{% capture article_content %}{{ article.content | strip_html }}{% endcapture %}
+{% assign content_split = article_content | split: '-content:' %}
+
+<article class="Article Journal" data-section-id="{{ section.id }}" data-section-type="article">
   <aside class="ArticleToolbar hidden-phone">
     <div class="ArticleToolbar__Left">
       <span class="Heading Text--subdued u-h8 hidden-tablet">{{ 'blog.article.now_reading' | t }}</span>
@@ -41,6 +47,7 @@
     </div>
   </aside>
 
+  {% comment %}
   {%- if article.image and section.settings.show_article_image -%}
     <div class="Article__ImageWrapper" style="background-image: url({{ article.image | img_url: '1x1' }})">
       <div class="Article__Image Image--lazyLoad Image--fadeIn"
@@ -49,9 +56,11 @@
       </div>
     </div>
   {%- endif -%}
+  {% endcomment %}
 
-  <div class="Article__Wrapper">
+  <div class="Container">
     <div class="Article__Content">
+      {% comment %}
       <header class="Article__Header">
         {%- capture article_meta -%}
           {%- if section.settings.show_date -%}
@@ -68,14 +77,28 @@
             {{- article_meta -}}
           </div>
         {%- endif -%}
-
-        <h1 class="Article__Title Heading u-h1">{{ article.title }}</h1>
       </header>
+      {% endcomment %}
 
-      <div class="Article__Body Rte">
-        {{ article.content }}
+      <div class="Article__Inner_Content">
+        <div class="Article__Main_Meta">
+          <h1 class="Article__Title">{{ article.title }}</h1>
+          <h1 class="Article__Author">with {{ article.author }}</h1>
+        </div>
+        <div class="Article__Main_Content">
+          <div class="Article__Text_Content">
+            <div class="Article__Article_Content">
+              <h5>{{ article.published_at | date: '%B %Y' }}</h5>
+              <p>{{ content_split[0] }}</p>
+            </div>
+          </div>
+          <div class="Article__Featured_Image">
+            <img src="{{ article.image | img_url: 'x920' }}">
+          </div>
+        </div>
       </div>
 
+      {% comment %}
       {%- capture article_footer -%}
         {%- if section.settings.show_author -%}
           <span class="Article__Author Heading Text--subdued u-h6">{{ 'blog.article.written_by' | t: author: article.author }}</span>
@@ -95,6 +118,7 @@
           {{ article_footer }}
         </footer>
       {%- endif -%}
+      {% endcomment %}
     </div>
 
     {%- if blog.comments_enabled? -%}
@@ -189,34 +213,189 @@
     {%- endif -%}
   </div>
 
-  {%- if blog.next_article or blog.previous_article -%}
-    <aside class="ArticleNav">
-      <div class="Container Container--narrow">
-        <div class="Grid Grid--m Grid--center">
-          {%- if blog.next_article -%}
-            <div class="Grid__Cell 1/2--tablet-and-up">
-              {%- render 'article-item', article: blog.next_article -%}
-            </div>
-          {%- elsif blog.articles_count > 3 -%}
-            <div class="Grid__Cell 1/2--tablet-and-up">
-              {%- render 'article-item', article: blog.articles.last -%}
-            </div>
-          {%- endif -%}
 
-          {%- if blog.previous_article -%}
-            <div class="Grid__Cell 1/2--tablet-and-up">
-              {%- render 'article-item', article: blog.previous_article -%}
-            </div>
-          {%- elsif blog.articles_count > 3 -%}
-            <div class="Grid__Cell 1/2--tablet-and-up">
-              {%- render 'article-item', article: blog.articles.first -%}
-            </div>
-          {%- endif -%}
-        </div>
+
+  {% comment %}
+     Extra content handling. Syntax has to be precise in blog posts
+	 These get processed by the '-content:' prefix in the article content
+
+  
+	 Six (6) content lines in total
+	 First five (5) are links to the articles (order is important)
+  
+	 Example: -content:journal/journal-story-title
+     (where 'journal' is the blog collection page, and 'journal-story-title' is the article handle within the 'journal' blog collection)
+
+  
+	 The last one is the quote, which then gets processed at the dash ('-') character
+	 First part is the quote itself, second part is the author of said quote
+  
+  	 Example: -content:Very nice quote goes here.-Author's name
+     (where 'Very nice quote goes here.' is the quote itself, and 'Author's name' is the author)
+  
+  
+     Please be wary of the space usages, because of the nature of this code being very fragile
+  	 Don't put space(s) before and after the '-content:' prefix
+     Don't put space(s) before and after the dash ('-') character in the quote
+  
+     Filling all five (5) articles' link in the blogpost's content is necessary
+     Giving the quote an author is necessary
+     Quotation marks and the dash are rendered automatically
+  {% endcomment %}
+  
+  {% capture article_content %}{{ article.content | strip_html }}{% endcapture %}
+  {% assign content_split = article_content | split: '-content:' %}
+  
+  {% assign ext_article_1_handle = content_split[1] | strip %}
+  {% assign ext_article_1 = articles[ext_article_1_handle] %}
+  
+  {% assign ext_article_2_handle = content_split[2] | strip %}
+  {% assign ext_article_2 = articles[ext_article_2_handle] %}
+  
+  {% assign ext_article_3_handle = content_split[3] | strip %}
+  {% assign ext_article_3 = articles[ext_article_3_handle] %}
+  
+  {% assign ext_article_4_handle = content_split[4] | strip %}
+  {% assign ext_article_4 = articles[ext_article_4_handle] %}
+  
+  {% assign ext_article_5_handle = content_split[5] | strip %}
+  {% assign ext_article_5 = articles[ext_article_5_handle] %}
+
+  {% assign ext_quote = content_split[6] | split: '-' %}
+  
+  {% comment %}
+     For some reason, string filters fail to work with article.content, like 'trunctate'
+     hence, long text is trunctated by CSS
+  {% endcomment %}
+
+  <div class="Recommendation__Container Container">
+    
+    <div class="Recommendations__Section_1">
+      <div class="ArticleBrowseItem">
+        <a href="{{ ext_article_1.url }}">
+          <div class="ArticleBrowseItem__Image">
+            <img src="{{ ext_article_1.image | img_url: '300x425', crop: 'center' }}">
+          </div>
+          <div class="ArticleBrowseItem__Text">
+            <p class="ArticleBrowseItem__Heading">{{ ext_article_1.title }}</p>
+            <p class="ArticleBrowseItem__Short-Content">{{ ext_article_1.content | strip_html | trunctate: 450 }}</p>
+          </div>
+        </a>
       </div>
-    </aside>
-  {%- endif -%}
+
+      <div class="ArticleBrowseItem">
+        <a href="{{ ext_article_2.url }}">
+          <div class="ArticleBrowseItem__Image">
+            <img src="{{ ext_article_2.image | img_url: '300x425', crop: 'center' }}">
+          </div>
+          <div class="ArticleBrowseItem__Text">
+            <p class="ArticleBrowseItem__Heading">{{ ext_article_2.title }}</p>
+            <p class="ArticleBrowseItem__Short-Content">{{ ext_article_2.content | strip_html | trunctate: 450 }}</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="ArticleBrowseItem">
+        <a href="{{ ext_article_3.url }}">
+          <div class="ArticleBrowseItem__Image">
+            <img src="{{ ext_article_3.image | img_url: '300x425', crop: 'center' }}">
+          </div>
+          <div class="ArticleBrowseItem__Text">
+            <p class="ArticleBrowseItem__Heading">{{ ext_article_3.title }}</p>
+            <p class="ArticleBrowseItem__Short-Content">{{ ext_article_3.content | strip_html | trunctate: 450 }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    
+    <div class="Recommendations__Section_2">
+      <div class="ArticleBrowseItem">
+        <a href="{{ ext_article_4.url }}">
+          <div class="ArticleBrowseItem__Image">
+            <img src="{{ ext_article_4.image | img_url: '200x' }}">
+          </div>
+          <div class="ArticleBrowseItem__Text">
+            <p class="ArticleBrowseItem__Heading">{{ ext_article_4.title }}</p>
+            <p class="ArticleBrowseItem__Short-Content">{{ ext_article_4.content | strip_html | trunctate: 150 }}</p>
+          </div>
+        </a>
+      </div>
+      <div class="ArticleQuote">
+        <p class="QuoteText">“{{ ext_quote[0] }}”</p>
+        <p>—</p>
+        <p>{{ ext_quote[1] }}</p>
+      </div>
+    </div>
+    
+    <div class="Recommendations__Section_3">
+      <div class="ArticleBrowseItem">
+        <a href="{{ ext_article_5.url }}">
+          <div class="ArticleBrowseItem__Image">
+            <img src="{{ ext_article_5.image | img_url: '620x' }}">
+          </div>
+          <div class="ArticleBrowseItem__Text">
+            <p class="ArticleBrowseItem__Heading">{{ ext_article_5.title }}</p>
+            <p class="ArticleBrowseItem__Short-Content">{{ ext_article_5.content | strip_html }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    
+  </div>
 </article>
+
+{% comment %}
+   Dependencies (jQuery and slick). Don't forget to copy these files from Assets, when migrating
+   Please copy slick's fontset (slick.tff, slick.woff, slick.svg, slick.eot) as well
+{% endcomment %}
+
+{{ 'jquery-1.11.0.min.js' | asset_url | script_tag  }}
+{{ 'jquery-migrate-1.2.1.min.js' | asset_url | script_tag  }}
+{{ 'slick.min.js' | asset_url | script_tag  }}
+{{ 'slick.css' | asset_url | stylesheet_tag }}
+{{ 'slick-theme.css' | asset_url | stylesheet_tag }}
+
+{% comment %}
+   Handling of the article slider via slick carousel
+{% endcomment %}
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    if(window.innerWidth < 900) {
+      $('.Recommendations__Section_1').slick({
+        dots: true,
+        arrows: false,
+        slidesToShow: 1,
+        infinite: true,
+        adaptiveHeight: true,
+        centerMode: true,
+        centerPadding: '60px',
+        variableWidth: true
+      });
+    }
+    
+    $(window).resize(function() {
+      if(window.innerWidth < 900) {
+        if (!$('.Recommendations__Section_1').hasClass('slick-initialized')) {
+          $('.Recommendations__Section_1').slick({
+            dots: true,
+            arrows: false,
+            slidesToShow: 1,
+            infinite: true,
+            adaptiveHeight: true,
+            centerMode: true,
+            centerPadding: '60px',
+            variableWidth: true
+          });
+        }
+      } else {
+        if ($('.Recommendations__Section_1').hasClass('slick-initialized')) {
+          $('.Recommendations__Section_1').slick('unslick');
+        }
+      }
+    });
+  });
+</script>
 
 {% schema %}
 {

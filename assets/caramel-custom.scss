@@ -2190,3 +2190,231 @@ body {
 }
 
 /*=====  End of homepage sliders  ======*/
+
+
+
+/*=============================================
+=            Section Journal Post             =
+=============================================*/
+
+.Article {
+  .Article__Inner_Content {
+    .Article__Title {
+      margin-bottom: 0;
+      font-size: 24px;
+    }
+    
+    .Article__Author {
+      font-style: italic;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    
+    h5 {
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 11px;
+    }
+  }
+  
+  .ArticleBrowseItem__Heading {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+  
+  .ArticleBrowseItem__Short-Content {
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  
+  &.Journal {
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 900px) {
+  .Article {
+    .Container {
+      .Article__Content {
+        .Article__Inner_Content {
+          margin-bottom: 90px;
+          
+          .Article__Main_Content {
+            display: flex;
+            margin-top: -85px;
+          }
+          
+          .Article__Text_Content {
+            width: 50%;
+            position: relative;
+            
+            .Article__Article_Content {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+          }
+          
+          .Article__Featured_Image {
+            text-align: center;
+            width: 50%;
+          }
+        }
+      }
+    }
+    
+    &.Journal {
+      .ArticleToolbar {
+        display: none;
+      }
+    }
+    
+    .Recommendation__Container {
+      .Recommendations__Section_1 {
+        display: flex;
+        margin-bottom: 100px;
+      }
+      
+      .Recommendations__Section_2 {
+        display: flex;
+        
+        .ArticleBrowseItem {
+          margin-right: 120px;
+        }
+        
+        .ArticleQuote {
+          max-width: 510px;
+          font-size: 24px;
+          
+          .QuoteText {
+            font-style: italic;
+          }
+          
+          p {
+            margin-bottom: 5px;
+          }
+        }
+      }
+      
+      .Recommendations__Section_3 {
+        display: flex;
+        justify-content: right;
+        margin-bottom: 50px;
+        margin-top: -100px;
+      }
+    }
+
+    .ArticleBrowseItem:not(:first-child) {
+      margin-left: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .Article {
+    .Container {
+      .Article__Content {
+        margin: 0 10px;
+        
+        .Article__Inner_Content {
+          margin-bottom: 45px;
+          
+          .Article__Main_Content {
+            display: flex;
+            flex-direction: column-reverse;
+            
+            .Article__Featured_Image {
+              margin-bottom: 36px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+    
+    .Recommendation__Container {
+      margin: 0 10px;
+      
+      .Recommendations__Section_2 {
+        margin-bottom: 55px;
+        
+        .ArticleQuote {
+          font-size: 24px;
+          
+          .QuoteText {
+            font-style: italic;
+          }
+          
+          p {
+            margin-bottom: 5px;
+          }
+        }
+      }
+      
+      .Recommendations__Section_3 {
+        margin-bottom: 30px;
+      }
+    }
+    
+    &.Journal {
+      .ArticleToolbar {
+        display: none;
+      }
+    }
+  }
+  
+  .Recommendations__Section_1 {
+    margin: 0 auto 55px auto;
+    
+    .ArticleBrowseItem {
+      display: flex !important;
+      justify-content: center;
+      margin: 0 5%;
+      min-width: 300px;
+    }
+  }
+}
+
+.ArticleBrowseItem {
+  max-width: 100%;
+  width: fit-content;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+}
+
+.Recommendations__Section_1 {
+  .ArticleBrowseItem__Text {
+    max-width: 300px;
+  }
+}
+
+.Recommendations__Section_2 {
+  .ArticleBrowseItem__Text {
+    max-width: 200px;
+  }
+}
+
+.Recommendations__Section_3 {
+  .ArticleBrowseItem__Text {
+    max-width: 620px;
+  }
+}
+
+.ArticleBrowseItem__Short-Content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+.slick-track {
+  width: fit-content !important;
+}
+
+.slick-slider {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+/*=====  End of Journal Post section  ======*/

@@ -450,7 +450,7 @@
           "show_vendor": false,
           "show_sku": false,
           "show_taxes_included": false,
-          "description_below_add_to_cart": false,
+          "description_below_add_to_cart": true,
           "selector_mode": "dropdown",
           "show_color_swatch": true,
           "show_color_carousel": false,
@@ -499,6 +499,7 @@
         "settings": {
           "section_size": "large",
           "activate_menu": true,
+          "video": "caramel.mp4",
           "image": "shopify:\/\/shop_images\/3dc9177f542d56cdb3cb9589f5f0a29b48c52b2b.png",
           "text_color": "#000000",
           "overlay_color": "#000000",
@@ -513,6 +514,7 @@
         "settings": {
           "section_size": "large",
           "activate_menu": false,
+          "video": "",
           "image": "shopify:\/\/shop_images\/3dc9177f542d56cdb3cb9589f5f0a29b48c52b2b.png",
           "text_color": "#000000",
           "overlay_color": "#000000",
@@ -623,28 +625,71 @@
       },
       "1611071803b055812f": {
         "type": "story-block-one",
-        "settings": {
-          "main_img": "shopify:\/\/shop_images\/c5c8cff48d50d45f0a04a67297e3e9480ae896c7.png",
-          "btn_text": "DISCOVER SEASONAL GIFTS",
-          "btn_link": "shopify:\/\/blogs\/news",
-          "heading": "Highlands Edit",
-          "textarea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-          "img_1": "shopify:\/\/shop_images\/e9f220bbc4d1fce94006e93d3fc444b496911247.png",
-          "img_2": "shopify:\/\/shop_images\/e9f220bbc4d1fce94006e93d3fc444b496911247.png",
-          "img_3": "shopify:\/\/shop_images\/908f6d337475e2e8c70c65825842f4cfae511600.png"
-        }
+        "blocks": {
+          "f73ea2ea-3aac-40f7-ac4f-e9bf21e1ef3f": {
+            "type": "slider",
+            "settings": {
+              "main_img": "shopify:\/\/shop_images\/c5c8cff48d50d45f0a04a67297e3e9480ae896c7.png",
+              "btn_text": "DISCOVER SEASONAL GIFTS",
+              "heading": "Highlands Edit",
+              "textarea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+              "img_1": "shopify:\/\/shop_images\/908f6d337475e2e8c70c65825842f4cfae511600.png",
+              "img_2": "shopify:\/\/shop_images\/e9f220bbc4d1fce94006e93d3fc444b496911247.png",
+              "img_3": "shopify:\/\/shop_images\/908f6d337475e2e8c70c65825842f4cfae511600.png"
+            }
+          },
+          "f80173e7-b090-4d34-be59-55b95f17ea76": {
+            "type": "slider",
+            "settings": {
+              "main_img": "shopify:\/\/shop_images\/c5c8cff48d50d45f0a04a67297e3e9480ae896c7.png",
+              "btn_text": "DISCOVER SEASONAL GIFTS",
+              "heading": "Highlands Edit",
+              "textarea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+              "img_1": "shopify:\/\/shop_images\/908f6d337475e2e8c70c65825842f4cfae511600.png",
+              "img_2": "shopify:\/\/shop_images\/908f6d337475e2e8c70c65825842f4cfae511600.png",
+              "img_3": "shopify:\/\/shop_images\/908f6d337475e2e8c70c65825842f4cfae511600.png"
+            }
+          }
+        },
+        "block_order": [
+          "f73ea2ea-3aac-40f7-ac4f-e9bf21e1ef3f",
+          "f80173e7-b090-4d34-be59-55b95f17ea76"
+        ],
+        "settings": {}
       },
       "16110805556be74973": {
         "type": "story-block-two",
-        "settings": {
-          "main_img": "shopify:\/\/shop_images\/9c6eec8985d9b794de875fb37d651df23bda6e69_Fotor_7e7177c2-a8d4-486a-9131-72dbeecff1a9.png",
-          "btn_text": "DISCOVER SEASONAL GIFTS",
-          "heading": "The Gift Guide",
-          "textarea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-          "image_heading": "Woodpecker cardigan, brown",
-          "image_text": "illum qui dolorem eum fugiat quo voluptas nulla pariatur",
-          "image_2": "shopify:\/\/shop_images\/469d7e370c0983cbffe6462e8de9fac3a6afc87d.png"
-        }
+        "blocks": {
+          "94844df6-dd44-43eb-9b98-45ef3230c980": {
+            "type": "slide",
+            "settings": {
+              "main_img": "shopify:\/\/shop_images\/9c6eec8985d9b794de875fb37d651df23bda6e69_Fotor.png",
+              "btn_text": "DISCOVER SEASONAL GIFTS",
+              "heading": "Highlands Edit",
+              "textarea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+              "image_heading": "Heading",
+              "image_text": "Woodpecker cardigan, brown illum qui dolorem eum fugiat quo voluptas nulla pariatur",
+              "image_2": "shopify:\/\/shop_images\/469d7e370c0983cbffe6462e8de9fac3a6afc87d.png"
+            }
+          },
+          "94c296f8-a943-484e-a608-b49963da2fb5": {
+            "type": "slide",
+            "settings": {
+              "main_img": "shopify:\/\/shop_images\/c2c04674b221c6f44cfcc698b20d49715dca07ae.png",
+              "btn_text": "DISCOVER SEASONAL GIFTS",
+              "heading": "Highlands Edit",
+              "textarea": "Description text",
+              "image_heading": "Heading",
+              "image_text": "Woodpecker cardigan, brown illum qui dolorem eum fugiat quo voluptas nulla pariatur",
+              "image_2": "shopify:\/\/shop_images\/f1a0ffd009bf149120fca2e5103b5c9f655d5552.png"
+            }
+          }
+        },
+        "block_order": [
+          "94844df6-dd44-43eb-9b98-45ef3230c980",
+          "94c296f8-a943-484e-a608-b49963da2fb5"
+        ],
+        "settings": {}
       },
       "1611083707edc2c6dc": {
         "type": "featured-collections-custom",
@@ -679,19 +724,40 @@
           "1611161142af0827cd-0": {
             "type": "collection",
             "settings": {
+              "button_text": "View all products",
+              "heading": "Highlands Edit",
+              "textarea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
               "collection": "get-creative",
-              "title": "",
+              "grid_items_count": 3
+            }
+          },
+          "7157585a-bd09-4d40-9d43-fcef7bace819": {
+            "type": "collection",
+            "settings": {
+              "button_text": "View all products",
+              "heading": "Highlands Edit",
+              "textarea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+              "collection": "woman",
+              "grid_items_count": 3
+            }
+          },
+          "96a98ac9-6c32-4954-92e2-794ebfc3b28a": {
+            "type": "collection",
+            "settings": {
+              "button_text": "View all products",
+              "heading": "Highlands Edit",
+              "textarea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+              "collection": "gift-guide-1",
               "grid_items_count": 3
             }
           }
         },
         "block_order": [
-          "1611161142af0827cd-0"
+          "1611161142af0827cd-0",
+          "7157585a-bd09-4d40-9d43-fcef7bace819",
+          "96a98ac9-6c32-4954-92e2-794ebfc3b28a"
         ],
         "settings": {
-          "button_text": "View all products",
-          "heading": "Get Creative",
-          "textarea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
           "bg_image": "shopify:\/\/shop_images\/b5575578817c13afc4903d64e6d91159f382d06d_Fotor_f453c917-adcf-42ff-abc9-eaede13658cf.png",
           "title": "Featured collection",
           "layout_mode": "carousel",
@@ -935,6 +1001,25 @@
           "6c0d99d9-3551-4a3c-b7af-6a125d6803ab"
         ],
         "settings": {}
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "show_rss": false,
+          "show_tags": false,
+          "show_featured_article": true,
+          "show_category": false
+        }
+      },
+      "featured-video-custom-blog": {
+        "type": "featured-video-custom-blog",
+        "settings": {
+          "section_size": "large",
+          "text_color": "#000000",
+          "subheading": "video",
+          "title": "Your video",
+          "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc"
+        }
       }
     },
     "content_for_index": [

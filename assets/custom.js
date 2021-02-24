@@ -62,7 +62,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   // header sidebar
   function sidebar() {
-    const links = document.querySelectorAll(".Header__Wrapper .HorizontalList__Item"),
+    const links = document.querySelectorAll(
+        ".Header__Wrapper .HorizontalList__Item"
+      ),
       mainDiv = document.getElementById("main"),
       dropdownLinks = document.querySelectorAll(".DropdownMenu .Link"),
       mainNav = document.querySelector(".Header__MainNav")
@@ -83,14 +85,18 @@ document.addEventListener("DOMContentLoaded", function () {
           mainNav.classList.add("open")
         }
       })
-      event.target.nextElementSibling ? (event.target.nextElementSibling.style.zIndex = 2) : null
+      event.target.nextElementSibling ?
+        (event.target.nextElementSibling.style.zIndex = 2) :
+        null
     }
     // switching between menus
     function switchMenu(event) {
       links.forEach((link) => {
         link.childNodes[2] ? (link.childNodes[2].style.zIndex = "1") : null
       })
-      event.target.childNodes[2] ? (event.target.childNodes[2].style.zIndex = "2") : null
+      event.target.childNodes[2] ?
+        (event.target.childNodes[2].style.zIndex = "2") :
+        null
     }
 
     // fix link functionality

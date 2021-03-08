@@ -55,16 +55,17 @@ document.addEventListener("DOMContentLoaded", function () {
   // copy logo to mobile sidebar
   function logoCopy() {
     const divToInsert = document.getElementById("mobile_menu_logo"),
-      logo = document
-      .querySelector(".Header__Wrapper .Header__LogoImage")
-      .cloneNode()
+          logo = document.querySelector(".Header__Wrapper .Header__LogoImage").cloneNode()
+    divToInsert.appendChild(logo)
+  }
+  function logoCopy1() {
+    const divToInsert = document.getElementById("mobile_menu_logo_sidebar"),
+          logo = document.querySelector(".Header__Wrapper .Header__LogoImage").cloneNode()
     divToInsert.appendChild(logo)
   }
   // header sidebar
   function sidebar() {
-    const links = document.querySelectorAll(
-        ".Header__Wrapper .HorizontalList__Item"
-      ),
+    const links = document.querySelectorAll(".Header__Wrapper .HorizontalList__Item"),
       mainDiv = document.getElementById("main"),
       dropdownLinks = document.querySelectorAll(".DropdownMenu .Link"),
       mainNav = document.querySelector(".Header__MainNav")
@@ -156,7 +157,32 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
+  function sidebar() {
+    const buttons = document.querySelectorAll('.template-collection .Collapsible .Collapsible__Button'),
+          close = document.getElementById('close_filters'),
+          sidebar = document.querySelector('.CollectionInner__Sidebar'),
+          open = document.getElementById('filter_button'),
+          mobileClose = document.getElementById('close_icon')
+    close.onclick = () => {
+      sidebar.classList.add('hidden')
+    }
+    mobileClose.onclick = () => {
+      sidebar.classList.add('hidden')
+    }
+    open.onclick = () => {
+      sidebar.classList.remove('hidden')
+    }
+    buttons.forEach(button => {
+      button.onclick = () => {
+        button.parentElement.classList.toggle('active')
+      }
+    })
+  }
 
+
+
+
+  sidebar()
   //mac os fix
   if (navigator.platform == "MacIntel") {
     macFix()
@@ -168,6 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   sidebar()
   logoCopy()
+  logoCopy1()
   footerAccordion()
   getFlickWidth()
   window.onresize = () => {

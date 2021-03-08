@@ -101,7 +101,7 @@
 
           <div class="Container">
             <div class="SectionHeader SectionHeader--center">
-              <h1 class="SectionHeader__Heading Heading u-h1">{{ collection.title }}</h1>
+              <h1 class="SectionHeader__Heading Heading u-h1">{{ collection.title }} &mdash; All</h1>
 
               {%- if collection.description != blank -%}
                 <div class="SectionHeader__Description Rte">
@@ -116,7 +116,7 @@
         <header class="PageHeader">
           <div class="Container">
             <div class="SectionHeader SectionHeader--center">
-              <h1 class="SectionHeader__Heading Heading u-h1">{{ collection.title }}</h1>
+              {%- comment -%}<h1 class="SectionHeader__Heading Heading u-h1">{{ collection.title }} &mdash; All</h1>{%- endcomment -%}
 
               {%- if collection.description != blank -%}
                 <div class="SectionHeader__Description Rte">
@@ -175,6 +175,7 @@
           <div class="CollectionToolbar CollectionToolbar--{{ section.settings.toolbar_position }} {% unless section.settings.show_layout_switch and show_filters == false and section.settings.show_sort_by == false %}CollectionToolbar--reverse{% endunless %}">
             {%- if show_filters or section.settings.show_sort_by -%}
               <div class="CollectionToolbar__Group">
+               <h1 class="desktop-hidden SectionHeader__Heading Heading u-h1">{{ collection.title }} &mdash; All</h1>
                 {%- if show_filters -%}
                   <button class="CollectionToolbar__Item CollectionToolbar__Item--filter Heading {% unless current_tags %}Text--subdued{% endunless %} u-h6 {% if section.settings.filter_position != 'drawer' %}hidden-lap-and-up{% endif %}"
                           data-action="open-drawer"
@@ -193,6 +194,7 @@
                     {{ 'collection.sorting.title' | t }} {% render 'icon' with 'select-arrow' %}
                   </button>
                 {%- endif -%}
+                 <button class="CollectionToolbar__Item Heading Text--subdued u-h6" id="filter_button">filter</button>
               </div>
             {%- endif -%}
 
@@ -209,6 +211,7 @@
                 </div>
               </div>
             {%- endif -%}
+            <h1 class="mobile-hidden SectionHeader__Heading Heading u-h1">{{ collection.title }} &mdash; All</h1>
           </div>
         {%- endif -%}
       {%- endcapture -%}
@@ -391,13 +394,21 @@
       {%- endcomment -%}
 
       <div class="CollectionMain">
-        {%- if section.settings.toolbar_position == 'top' -%}
-          {{- collection_toolbar -}}
-        {%- endif -%}
-
-        <div class="CollectionInner">
+        
+          {%- if section.settings.toolbar_position == 'top' -%}
+            {{- collection_toolbar -}}
+          {%- endif -%}
+       <div class="CollectionInner">
           {%- if show_filters and section.settings.filter_position == 'sidebar' -%}
-            <div class="CollectionInner__Sidebar {% if collection_toolbar != blank and section.settings.toolbar_position == 'top' %}CollectionInner__Sidebar--withTopToolbar{% endif %} hidden-pocket">
+            <div class="hidden CollectionInner__Sidebar {% if collection_toolbar != blank and section.settings.toolbar_position == 'top' %}CollectionInner__Sidebar--withTopToolbar{% endif %}">
+            <div class="filter-close">
+             <button id="close_icon" class="Drawer__Close Icon-Wrapper--clickable" data-action="close-drawer" data-drawer-id="sidebar-menu" aria-label="{{ 'header.navigation.close_sidebar' | t }}">
+        {%- render 'icon' with 'close' -%}
+      </button>
+      <div id="mobile_menu_logo_sidebar"></div>
+                <span id="close_filters">close</span>
+                <span>filter</span>
+              </div>
               <div class="CollectionFilters">
                 {{ filters_content }}
 
@@ -613,3 +624,5 @@
   ]
 }
 {% endschema %}
+
+

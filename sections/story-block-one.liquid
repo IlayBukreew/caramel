@@ -1,69 +1,101 @@
 <section class="story-one" id={{section.id}}>
 
-<!-- Slider main container -->
-<div class="swiper-container">
-  <!-- Additional required wrapper -->
-  <div class="swiper-wrapper">
-    <!-- Slides -->
-	{% for block in section.blocks %}
-	{% assign slide = block.settings %}
-    <div class="swiper-slide">
-		<h3 class="story-heading"><span>Craft —</span> Pattern </h3>
-		<div class="content">
-			<div class="col-one">
-				<div class="col-content">
-					{%- render 'image', image: slide.main_img -%}
-					<a class="Form__Submit Button Button--primary"
-						href="{{ slide.btn_link }}">
-						{{ slide.btn_text }}
-						<span>→</span>
-					</a>
+	<!-- Slider main container -->
+	<div class="swiper-container">
+		<!-- Additional required wrapper -->
+		<div class="swiper-wrapper">
+			<!-- Slides -->
+			{% for block in section.blocks %}
+			{% assign slide = block.settings %}
+			<div class="swiper-slide">
+				<h3 class="story-heading"><span>Craft —</span> Pattern </h3>
+				<div class="content">
+					<div class="col-one">
+						<div class="col-content">
+							{%- render 'image', image: slide.main_img -%}
+							<a class="Form__Submit Button Button--primary" href="{{ slide.btn_link }}">
+								{{ slide.btn_text }}
+								<span>→</span>
+							</a>
+						</div>
+					</div>
+					<div class="col-two">
+						<h2>{{ slide.heading }}</h2>
+						<p>{{ slide.textarea }}</p>
+						<div class="circles">
+							<img src="{{ slide.img_1 | img_url: 'medium' }}" alt="">
+							<img src="{{ slide.img_2 | img_url: 'medium' }}" alt="">
+							<img src="{{ slide.img_3 | img_url: 'medium' }}" alt="">
+						</div>
+						<a class=" mobile-dblock Form__Submit Button Button--primary"
+							href="{{ slide.btn_link }}">{{ slide.btn_text }}<span>→</span></a>
+					</div>
 				</div>
 			</div>
-			<div class="col-two">
-				<h2>{{ slide.heading }}</h2>
-				<p>{{ slide.textarea }}</p>
-				<div class="circles">
-					<img src="{{ slide.img_1 | img_url: 'medium' }}" alt="">
-					<img src="{{ slide.img_2 | img_url: 'medium' }}" alt="">
-					<img src="{{ slide.img_3 | img_url: 'medium' }}" alt="">
-				</div>
-				<a class=" mobile-dblock Form__Submit Button Button--primary"
-					href="{{ slide.btn_link }}">{{ slide.btn_text }}<span>→</span></a>
-			</div>
+			{% endfor %}
+
 		</div>
+
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 476.213 476.213" style="enable-background:new 0 0 476.213 476.213;" xml:space="preserve">
+		<polygon points="405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5   405.606,308.713 476.213,238.106 "/>
+		<g>
+		</g>
+		<g>
+		</g>
+		<g>
+		</g>
+		<g>
+		</g>
+		<g>
+		</g>
+		<g>
+		</g>
+		<g>
+		</g>
+		<g>
+		</g>
+		<g>
+		</g>
+		<g>
+		</g>
+		<g>
+		</g>
+		<g>
+		</g>
+		<g>
+		</g>
+		<g>
+		</g>
+		<g>
+		</g>
+		</svg>
+		</div>
+
 	</div>
-	{% endfor %}
-
-  </div>
-
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
-
-</div>
 
 
 
 </section>
 
 <script>
- function sliderInit() {
-    const swiper = new Swiper('.swiper-container', {
-      loop: true,
-      effect: 'fade',
-      allowTouchMove: false,
-      // Navigation arrows
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      }
-    })
-    if (swiper.slides.length <= 3) {
-      swiper.navigation.nextEl.style.display = 'none'
-    }
-  }
+	function sliderInit() {
+		const swiper = new Swiper('.swiper-container', {
+			loop: true,
+			effect: 'fade',
+			allowTouchMove: false,
+			// Navigation arrows
+			navigation: {
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev",
+			}
+		})
+		if (swiper.slides.length <= 3) {
+			swiper.navigation.nextEl.style.display = 'none'
+		}
+	}
 	sliderInit()
-
 </script>
 
 
@@ -72,10 +104,10 @@
 {
 "name": "Story block",
 "blocks":[
-	{
-		"type": "slider",
-		"name": "Slide",
-		"settings": [
+{
+"type": "slider",
+"name": "Slide",
+"settings": [
 
 
 {
@@ -122,8 +154,8 @@
 }
 
 ]
-	 }
- ],
+}
+],
 
 "presets": [
 {

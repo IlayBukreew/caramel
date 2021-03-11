@@ -15,7 +15,7 @@
     "footer_background": "#fbf9f6",
     "footer_heading_color": "#1c1b1b",
     "footer_text_color": "#000000",
-    "navigation_background": "#dadad2",
+    "navigation_background": "#fbf9f6",
     "navigation_text_color": "#000000",
     "newsletter_popup_background": "#1c1b1b",
     "newsletter_popup_text_color": "#ffffff",
@@ -63,7 +63,7 @@
         "settings": {
           "enable_bar": true,
           "home_page_only": true,
-          "background": "#eee3d9",
+          "background": "#f8f5f3",
           "text_color": "#000000",
           "content": "Click and collect now available",
           "link": "shopify:\/\/collections\/all"
@@ -641,10 +641,10 @@
           "f80173e7-b090-4d34-be59-55b95f17ea76": {
             "type": "slider",
             "settings": {
-              "main_img": "shopify:\/\/shop_images\/c5c8cff48d50d45f0a04a67297e3e9480ae896c7.png",
+              "main_img": "shopify:\/\/shop_images\/9c6eec8985d9b794de875fb37d651df23bda6e69_Fotor.png",
               "btn_text": "DISCOVER SEASONAL GIFTS",
               "heading": "Highlands Edit",
-              "textarea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+              "textarea": "test testsetestse\ntestes\ntes\nts\nteste",
               "img_1": "shopify:\/\/shop_images\/908f6d337475e2e8c70c65825842f4cfae511600.png",
               "img_2": "shopify:\/\/shop_images\/908f6d337475e2e8c70c65825842f4cfae511600.png",
               "img_3": "shopify:\/\/shop_images\/908f6d337475e2e8c70c65825842f4cfae511600.png"
@@ -1019,6 +1019,16 @@
           "subheading": "video",
           "title": "Your video",
           "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc"
+        }
+      },
+      "article-template-journal": {
+        "type": "article-template-journal",
+        "settings": {
+          "show_article_image": true,
+          "show_date": true,
+          "show_category": false,
+          "show_author": true,
+          "show_share_buttons": true
         }
       }
     },

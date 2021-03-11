@@ -44,6 +44,12 @@
       },
       {
         "type": "color",
+        "id": "main_bg",
+        "label": "Second background",
+        "default": "#f9f3ee"
+      },
+      {
+        "type": "color",
         "id": "light_background",
         "label": "Light background",
         "default": "#ffffff"

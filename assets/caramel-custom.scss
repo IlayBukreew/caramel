@@ -10,6 +10,7 @@
 
 @font-face {
   font-family: "NewCenturySchlbkLTStd_Roman";
+
   src: url("NewCenturySchlbkLTStd-Roman.otf") format("woff");
 }
 
@@ -118,7 +119,7 @@ body {
 =============================================*/
 
 #shopify-section-1610723905e6a6cfee {
-  background-color: #f9f3ee;
+  background-color: var(--main-bg);
   padding: 50px 0;
 
   h2.collection-heading {
@@ -222,7 +223,25 @@ body {
 /*=============================================
 =            Sidebar && header          =
 =============================================*/
+.features--heading-small .Popover--small .Popover__Value {
+  font-size: 12px;
+  position: relative;
 
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    height: 1px;
+    width: 0;
+    background-color: #000;
+    transition: width .5s ease;
+
+  }
+
+  &:hover::before {
+    width: 42px;
+  }
+}
 
 #shopify-section-header {
   z-index: 100;
@@ -698,7 +717,7 @@ body {
 
     .Form__Submit span {
       font-size: 22px;
-      margin-left: 30px;
+      margin-left: 100px;
     }
   }
 
@@ -1033,7 +1052,7 @@ body {
 
 .story-two {
   padding: 100px 0 50px 0;
-  background-color: #f9f3ee;
+  background-color: var(--main-bg);
 
   .col-content {
     min-width: 100% !important;
@@ -2044,6 +2063,38 @@ body {
 
 
 
+/*=============================================
+=            pages            =
+=============================================*/
+
+.two-column {
+  display: flex;
+  max-width: unset;
+
+  .col-one {
+    padding-right: 20px;
+  }
+
+  .col-two {
+    padding-left: 20px;
+  }
+
+  @media (max-width: 800px) {
+    flex-wrap: wrap;
+
+    .col-one {
+      padding-right: 0;
+    }
+
+    .col-two {
+      padding-left: 0;
+    }
+  }
+}
+
+/*=====  End of pages  ======*/
+
+
 
 
 
@@ -2379,8 +2430,19 @@ body {
     border: 1px solid;
     border-right: none;
 
+    &::after {
+      content: none !important;
+    }
+
+    svg {
+      width: 25px;
+      transition: transform .4s ease;
+    }
+
     &:hover {
-      border-style: inset;
+      svg {
+        transform: scale(1.2);
+      }
     }
   }
 
@@ -2388,10 +2450,6 @@ body {
     display: none;
   }
 
-  .swiper-button-next:after {
-    content: '→';
-    font-size: 30px;
-  }
 }
 
 /*=====  End of homepage sliders  ======*/

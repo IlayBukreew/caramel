@@ -1,17 +1,20 @@
 {%- if section.settings.layout_mode == 'carousel' -%}
-    {%- capture flickity_options -%}
-        { "prevNextButtons": true, "pageDots": false, "wrapAround": false, "contain":
-        true, "cellAlign": "center", "watchCSS": true, "dragThreshold": 8, "groupCells":
-        true, "arrowShape": {"x0": 20, "x1": 60, "y1": 40, "x2": 60, "y2": 35, "x3": 25}
-        }
-    {%- endcapture -%}
+{%- capture flickity_options -%}
+{ "prevNextButtons": true, "pageDots": false, "wrapAround": false, "contain":
+true, "cellAlign": "center", "watchCSS": true, "dragThreshold": 8, "groupCells":
+true, "arrowShape": {"x0": 20, "x1": 60, "y1": 40, "x2": 60, "y2": 35, "x3": 25}
+}
+{%- endcapture -%}
 {%- endif -%}
 
 {%- capture section_settings -%}
-    {
-    "layout": {{ section.settings.layout_mode | json }} }
+{
+"layout": {{ section.settings.layout_mode | json }} }
 {%- endcapture -%}
-<section class="collection-list-custom story_block_three" style="background-image: url({{ section.settings.bg_image | img_url: 'original'  }});" class="Section Section--spacingNormal" data-section-id="{{ section.id }}" data-section-type="featured-collections" data-settings='{{ section_settings }}'>
+<section class="collection-list-custom story_block_three"
+    style="background-image: url({{ section.settings.bg_image | img_url: 'original'  }});"
+    class="Section Section--spacingNormal" data-section-id="{{ section.id }}" data-section-type="featured-collections"
+    data-settings='{{ section_settings }}'>
     <!-- Slider main container -->
     <div class="swiper-container-three">
         <!-- Additional required wrapper -->
@@ -19,138 +22,186 @@
 
             {%- for block in section.blocks -%}
 
-                <!-- Slides -->
-                <div class="swiper-slide">
-                    <div class="container_block_three">
-                        <div class="left-col">
-                            <h3 class="story-heading">
-                                <span>Craft —</span>
-                                Pattern
-                            </h3>
-                            <a href="{{ block.settings.btn_url }}" class="Button Button--primary">{{ block.settings.button_text | escape }}
-                                <span>→</span>
-                            </a>
-                        </div>
-                        <div class="right-col">
-                            <h2>{{ block.settings.heading }}</h2>
-                            <p>{{ block.settings.textarea }}</p>
-                            <a href="{{ block.settings.btn_url }}" class=" mobile_visible Button Button--primary">{{ block.settings.button_text | escape }}
-                                <span>→</span>
-                            </a>
-                        </div>
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="container_block_three">
+                    <div class="left-col">
+                        <h3 class="story-heading">
+                            <span>Craft —</span>
+                            Pattern
+                        </h3>
+                        <a href="{{ block.settings.btn_url }}"
+                            class="Button Button--primary">{{ block.settings.button_text | escape }}
+                            <span>→</span>
+                        </a>
                     </div>
+                    <div class="right-col">
+                        <h2>{{ block.settings.heading }}</h2>
+                        <p>{{ block.settings.textarea }}</p>
+                        <a href="{{ block.settings.btn_url }}"
+                            class=" mobile_visible Button Button--primary">{{ block.settings.button_text | escape }}
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
 
-                    {%- assign collection = collections[block.settings.collection] -%}
+                {%- assign collection = collections[block.settings.collection] -%}
 
-                    <div class="TabPanel" id="block-{{ block.id }}" aria-hidden="{% if forloop.first %}false{% else %}false{% endif %}" role="tabpanel" {{ block.shopify_attributes }}>
-                        <div class="ProductListWrapper">
-                            {%- if collection != empty -%}
-                                {%- assign item_count = block.settings.grid_items_count -%}
+                <div class="TabPanel" id="block-{{ block.id }}"
+                    aria-hidden="{% if forloop.first %}false{% else %}false{% endif %}" role="tabpanel"
+                    {{ block.shopify_attributes }}>
+                    <div class="ProductListWrapper">
+                        {%- if collection != empty -%}
+                        {%- assign item_count = block.settings.grid_items_count -%}
 
-                                {%- if collection.products_count < block.settings.grid_items_count -%}
-                                    {%- assign item_count = collection.products_count -%}
-                                {%- endif -%}
+                        {%- if collection.products_count < block.settings.grid_items_count -%}
+                        {%- assign item_count = collection.products_count -%}
+                        {%- endif -%}
 
-                                {%- if section.settings.layout_mode == 'grid' -%}
-                                    <div class="ProductList ProductList--grid ProductList--removeMargin Grid" data-mobile-count="{{ section.settings.grid_mobile_items_per_row }}" data-desktop-count="{{ section.settings.grid_desktop_items_per_row }}">
-                                        {%- for product in collection.products limit: block.settings.grid_items_count -%}
-                                            <div class="Grid__Cell 1/{{ section.settings.grid_mobile_items_per_row }}--phone
+                        {%- if section.settings.layout_mode == 'grid' -%}
+                        <div class="ProductList ProductList--grid ProductList--removeMargin Grid"
+                            data-mobile-count="{{ section.settings.grid_mobile_items_per_row }}"
+                            data-desktop-count="{{ section.settings.grid_desktop_items_per_row }}">
+                            {%- for product in collection.products limit: block.settings.grid_items_count -%}
+                            <div
+                                class="Grid__Cell 1/{{ section.settings.grid_mobile_items_per_row }}--phone
                                                     1/2--tablet 1/{{ section.settings.grid_desktop_items_per_row }}--lap-and-up">
-                                                {%- render 'product-item-custom', product: product, show_product_info: section.settings.show_product_info, show_vendor: section.settings.show_vendor, show_color_swatch: section.settings.show_color_swatch, show_labels: true -%}
-                                            </div>
-                                        {%- endfor -%}
-                                    </div>
-                                {%- else -%}
-                                    <div class="ProductList ProductList--carousel Carousel" data-flickity-config='{{ flickity_options }}'>
-                                        {%- for product in collection.products limit: block.settings.grid_items_count -%}
-                                            <div class="Carousel__Cell">
-                                                {%- render 'product-item-custom', product: product, show_product_info: section.settings.show_product_info, show_vendor: section.settings.show_vendor, show_color_swatch: section.settings.show_color_swatch, show_labels: true -%}
-                                            </div>
-                                        {%- endfor -%}
-                                    </div>
-                                {%- endif -%}
-                            {%- else -%}
-                                {%- comment -%}If collection is not set, we use placeholder content for all three layout mode{%- endcomment -%}
+                                {%- render 'product-item-custom', product: product, show_product_info: section.settings.show_product_info, show_vendor: section.settings.show_vendor, show_color_swatch: section.settings.show_color_swatch, show_labels: true -%}
+                            </div>
+                            {%- endfor -%}
+                        </div>
+                        {%- else -%}
+                        <div class="ProductList ProductList--carousel Carousel"
+                            data-flickity-config='{{ flickity_options }}'>
+                            {%- for product in collection.products limit: block.settings.grid_items_count -%}
+                            <div class="Carousel__Cell">
+                                {%- render 'product-item-custom', product: product, show_product_info: section.settings.show_product_info, show_vendor: section.settings.show_vendor, show_color_swatch: section.settings.show_color_swatch, show_labels: true -%}
+                            </div>
+                            {%- endfor -%}
+                        </div>
+                        {%- endif -%}
+                        {%- else -%}
+                        {%- comment -%}If collection is not set, we use placeholder content for all three layout
+                        mode{%- endcomment -%}
 
-                                {%- capture products_placeholder -%}
-                                    {%- for i in (1..block.settings.grid_items_count) -%}
-                                        <div class="{% if section.settings.layout_mode == 'grid' %}Grid__Cell 1/{{ section.settings.grid_mobile_items_per_row }}--phone 1/2--tablet-and-up 1/{{ section.settings.grid_desktop_items_per_row }}--lap-and-up{% else %}Carousel__Cell{% endif %}">
-                                            <div class="ProductItem">
-                                                <div class="ProductItem__Wrapper">
+                        {%- capture products_placeholder -%}
+                        {%- for i in (1..block.settings.grid_items_count) -%}
+                        <div
+                            class="{% if section.settings.layout_mode == 'grid' %}Grid__Cell 1/{{ section.settings.grid_mobile_items_per_row }}--phone 1/2--tablet-and-up 1/{{ section.settings.grid_desktop_items_per_row }}--lap-and-up{% else %}Carousel__Cell{% endif %}">
+                            <div class="ProductItem">
+                                <div class="ProductItem__Wrapper">
 
-                                                    <a class="ProductItem__ImageWrapper" href="#">
-                                                        {% capture current %}
-                                                            {% cycle 1, 2, 3, 4, 5, 6 %}
-                                                        {% endcapture %}
-                                                        {{ 'product-' | append: current | placeholder_svg_tag: 'ProductItem__Image PlaceholderSvg PlaceholderSvg--dark' }}
-                                                    </a>
+                                    <a class="ProductItem__ImageWrapper" href="#">
+                                        {% capture current %}
+                                        {% cycle 1, 2, 3, 4, 5, 6 %}
+                                        {% endcapture %}
+                                        {{ 'product-' | append: current | placeholder_svg_tag: 'ProductItem__Image PlaceholderSvg PlaceholderSvg--dark' }}
+                                    </a>
 
-                                                    {%- if section.settings.show_product_info -%}
-                                                        <div class="ProductItem__Info ProductItem__Info--{{ settings.product_info_alignment
+                                    {%- if section.settings.show_product_info -%}
+                                    <div class="ProductItem__Info ProductItem__Info--{{ settings.product_info_alignment
                                                                 }}">
 
 
-                                                            <h2 class="ProductItem__Title Heading">{{ 'home_page.onboarding.product_title' | t }}</h2>
-                                                            {%- if section.settings.show_vendor -%}
-                                                                <p class="ProductItem__Vendor Heading">{{ 'home_page.onboarding.vendor_title' | t }}</p>
-                                                            {%- endif -%}
-                                                            <div class="ProductItem__PriceList Heading">
-                                                                <span class="ProductItem__Price Price Text--subdued">{{ 3000 | money_without_trailing_zeros }}</span>
-                                                            </div>
-                                                        </div>
-                                                    {%- endif -%}
-                                                </div>
-                                            </div>
+                                        <h2 class="ProductItem__Title Heading">
+                                            {{ 'home_page.onboarding.product_title' | t }}</h2>
+                                        {%- if section.settings.show_vendor -%}
+                                        <p class="ProductItem__Vendor Heading">
+                                            {{ 'home_page.onboarding.vendor_title' | t }}</p>
+                                        {%- endif -%}
+                                        <div class="ProductItem__PriceList Heading">
+                                            <span
+                                                class="ProductItem__Price Price Text--subdued">{{ 3000 | money_without_trailing_zeros }}</span>
                                         </div>
-                                    {%- endfor -%}
-                                {%- endcapture -%}
-
-                                {%- if section.settings.layout_mode == 'grid' -%}
-                                    <div class="ProductList ProductList--grid ProductList--removeMargin Grid" data-mobile-count="{{ section.settings.grid_mobile_items_per_row }}" data-desktop-count="{{ section.settings.grid_desktop_items_per_row }}">
-                                        {{ products_placeholder }}
                                     </div>
-                                {%- else -%}
-                                    <div class="ProductList ProductList--carousel Carousel" data-flickity-config='{{ flickity_options }}'>
-                                        {{ products_placeholder }}
-                                    </div>
-                                {%- endif -%}
-                            {%- endif -%}
-                        </div>
-
-                        {%- if block.settings.button_text != blank -%}
-                            <div class="Container">
-                                <div class="SectionFooter"></div>
+                                    {%- endif -%}
+                                </div>
                             </div>
+                        </div>
+                        {%- endfor -%}
+                        {%- endcapture -%}
+
+                        {%- if section.settings.layout_mode == 'grid' -%}
+                        <div class="ProductList ProductList--grid ProductList--removeMargin Grid"
+                            data-mobile-count="{{ section.settings.grid_mobile_items_per_row }}"
+                            data-desktop-count="{{ section.settings.grid_desktop_items_per_row }}">
+                            {{ products_placeholder }}
+                        </div>
+                        {%- else -%}
+                        <div class="ProductList ProductList--carousel Carousel"
+                            data-flickity-config='{{ flickity_options }}'>
+                            {{ products_placeholder }}
+                        </div>
+                        {%- endif -%}
                         {%- endif -%}
                     </div>
+
+                    {%- if block.settings.button_text != blank -%}
+                    <div class="Container">
+                        <div class="SectionFooter"></div>
+                    </div>
+                    {%- endif -%}
                 </div>
+            </div>
             {%- endfor -%}
 
         </div>
 
-        <div class="swiper-button-next"></div>
+        <div class="swiper-button-next">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 476.213 476.213" style="enable-background:new 0 0 476.213 476.213;" xml:space="preserve">
+                <polygon points="405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5   405.606,308.713 476.213,238.106 "/>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                </svg>
+        </div>
     </div>
 </section>
 
 
 <script>
-
- function sliderInit() {
-    const swiper = new Swiper('.swiper-container-three', {
-      loop: true,
-      effect: 'fade',
-      allowTouchMove: false,
-      // Navigation arrows
-      navigation: {
-        nextEl: ".swiper-button-next"
-      }
-    })
-    if (swiper.slides.length <= 3) {
-      swiper.navigation.nextEl.style.display = 'none'
+    function sliderInit() {
+        const swiper = new Swiper('.swiper-container-three', {
+            loop: true,
+            effect: 'fade',
+            allowTouchMove: false,
+            // Navigation arrows
+            navigation: {
+                nextEl: ".swiper-button-next"
+            }
+        })
+        if (swiper.slides.length <= 3) {
+            swiper.navigation.nextEl.style.display = 'none'
+        }
     }
-  }
-	sliderInit()
-
+    sliderInit()
 </script>
 {%- capture hack -%}
 {%- comment -%}This is just an ugly hack to make those variables appear as part of the theme editor in the General

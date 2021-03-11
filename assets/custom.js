@@ -41,12 +41,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // get flickity width
   function getFlickWidth() {
     if (window.innerWidth > 1300) {
-      const flickityDiv = document.querySelector(".story_block_three .flickity-slider"),
+      const flickityDiv = document.querySelector(
+          ".story_block_three .flickity-slider"
+        ),
         containers = document.querySelectorAll(".container_block_three")
 
       if (flickityDiv && document.body.classList.contains("template-index")) {
         let flickWidth = flickityDiv.getBoundingClientRect().left + 10
-        containers.forEach(container => {
+        containers.forEach((container) => {
           container.style.margin = ` 0 ${flickWidth}px`
         })
       }
@@ -55,17 +57,25 @@ document.addEventListener("DOMContentLoaded", function () {
   // copy logo to mobile sidebar
   function logoCopy() {
     const divToInsert = document.getElementById("mobile_menu_logo"),
-          logo = document.querySelector(".Header__Wrapper .Header__LogoImage").cloneNode()
+      logo = document.querySelector(".Header__Wrapper .Header__LogoImage").cloneNode()
     divToInsert.appendChild(logo)
   }
+
   function logoCopy1() {
-    const divToInsert = document.getElementById("mobile_menu_logo_sidebar"),
-          logo = document.querySelector(".Header__Wrapper .Header__LogoImage").cloneNode()
-    divToInsert.appendChild(logo)
+    const divToInsert = document.getElementById("mobile_menu_logo_sidebar")
+    if (divToInsert) {
+      const logo = document
+        .querySelector(".Header__Wrapper .Header__LogoImage")
+        .cloneNode()
+      divToInsert.appendChild(logo)
+    }
   }
+
   // header sidebar
   function sidebar() {
-    const links = document.querySelectorAll(".Header__Wrapper .HorizontalList__Item"),
+    const links = document.querySelectorAll(
+        ".Header__MainNav li.HorizontalList__Item"
+      ),
       mainDiv = document.getElementById("main"),
       dropdownLinks = document.querySelectorAll(".DropdownMenu .Link"),
       mainNav = document.querySelector(".Header__MainNav")
@@ -156,33 +166,33 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(arrows)
   }
 
-
-  function sidebar() {
-    const buttons = document.querySelectorAll('.template-collection .Collapsible .Collapsible__Button'),
-          close = document.getElementById('close_filters'),
-          sidebar = document.querySelector('.CollectionInner__Sidebar'),
-          open = document.getElementById('filter_button'),
-          mobileClose = document.getElementById('close_icon')
-    close.onclick = () => {
-      sidebar.classList.add('hidden')
-    }
-    mobileClose.onclick = () => {
-      sidebar.classList.add('hidden')
-    }
-    open.onclick = () => {
-      sidebar.classList.remove('hidden')
-    }
-    buttons.forEach(button => {
-      button.onclick = () => {
-        button.parentElement.classList.toggle('active')
+  function sidebarCollection() {
+    const close = document.getElementById("close_filters")
+    if (close) {
+      const buttons = document.querySelectorAll(
+          ".template-collection .Collapsible .Collapsible__Button"
+        ),
+        sidebar = document.querySelector(".CollectionInner__Sidebar"),
+        open = document.getElementById("filter_button"),
+        mobileClose = document.getElementById("close_icon")
+      close.onclick = () => {
+        sidebar.classList.add("hidden")
       }
-    })
+      mobileClose.onclick = () => {
+        sidebar.classList.add("hidden")
+      }
+      open.onclick = () => {
+        sidebar.classList.remove("hidden")
+      }
+      buttons.forEach((button) => {
+        button.onclick = () => {
+          button.parentElement.classList.toggle("active")
+        }
+      })
+    }
   }
 
-
-
-
-  sidebar()
+  sidebarCollection()
   //mac os fix
   if (navigator.platform == "MacIntel") {
     macFix()

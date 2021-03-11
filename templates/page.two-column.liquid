@@ -1,0 +1,18 @@
+<div class="Container">
+
+	{% capture text_one %}{{ page.content | split: '<div class="split"></div>' | first }}{% endcapture %}
+	{% capture text_two %}{{ page.content | split: '<div class="split"></div>' | last }}{% endcapture %}
+	<div class="PageContent two-column Rte">
+		<div class="col-one">
+			<header class="PageHeader">
+				<div class="SectionHeader SectionHeader--center">
+					<h1 class="SectionHeader__Heading Heading u-h1">{{ page.title }}</h1>
+				</div>
+			</header>
+			{{ text_one }}
+		</div>
+	</div>
+	<div class="col-two">
+		{{ text_two }}
+	</div>
+</div>

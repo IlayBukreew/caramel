@@ -11,6 +11,7 @@
   {{ text_font_bold_italic | font_face: font_display: 'fallback' }}
 
   :root {
+    --main-bg: {{settings.main_bg}};
     --heading-font-family : {{settings.heading_font.family}}, {{ settings.heading_font.fallback_families }};
     --heading-font-weight : {{settings.heading_font.weight}};
     --heading-font-style  : {{settings.heading_font.style}};

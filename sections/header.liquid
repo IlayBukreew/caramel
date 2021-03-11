@@ -506,17 +506,28 @@ HEADER CONTENT
       --header-is-transparent: 0;
     }
   {%- endif -%}
+
+  .DropdownMenu {
+    background-color: {{section.settings.side_bg}}
+  }
 </style>
 
 <script>
   document.documentElement.style.setProperty('--header-height', document.getElementById('shopify-section-header').offsetHeight + 'px');
 </script>
 
+
 {% schema %}
 {
   "name": "Header",
   "class": "shopify-section--header",
   "settings": [
+    {
+      "type": "color",
+      "id": "side_bg",
+      "label": "Sidebar background color",
+      "default": "#DADAD2"
+    },
     {
       "type": "checkbox",
       "id": "use_sticky_header",

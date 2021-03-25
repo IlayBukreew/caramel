@@ -5,6 +5,7 @@
     "text_light_color": "#6a6a6a",
     "link_color": "#6a6a6a",
     "background": "#fbf9f6",
+    "main_bg": "#f9f3ee",
     "light_background": "#ffffff",
     "product_on_sale_color": "#f94c43",
     "button_background": "#1c1b1b",
@@ -72,6 +73,7 @@
       "header": {
         "type": "header",
         "settings": {
+          "side_bg": "#dadad2",
           "use_sticky_header": true,
           "logo": "shopify:\/\/shop_images\/logo.png",
           "logo_max_width": 200,
@@ -451,7 +453,7 @@
           "show_sku": false,
           "show_taxes_included": false,
           "description_below_add_to_cart": true,
-          "selector_mode": "dropdown",
+          "selector_mode": "block",
           "show_color_swatch": true,
           "show_color_carousel": false,
           "show_quantity_selector": false,
@@ -896,7 +898,7 @@
           "e018c760-9179-4513-b47e-e87bc16c183e": {
             "type": "lookbook_block_1",
             "settings": {
-              "lookbook_1_collection_1": "get-creative",
+              "lookbook_1_collection_1": "lookbook-01-collection",
               "lookbook_1_image_1": "shopify:\/\/shop_images\/9c6eec8985d9b794de875fb37d651df23bda6e69_Fotor.png",
               "lookbook_1_title_1": "Woodpecker coat — brown",
               "lookbook_1_description_1": "Sigur almurni aholinui enteres",
@@ -1030,6 +1032,19 @@
           "show_author": true,
           "show_share_buttons": true
         }
+      },
+      "1615342542402f807f": {
+        "type": "social-icons",
+        "settings": {}
+      },
+      "16153976549dabbd3d": {
+        "type": "instafeed",
+        "settings": {
+          "heading_font": "futura_n4",
+          "heading_size": 20,
+          "feed_width": 100,
+          "html_area": ""
+        }
       }
     },
     "content_for_index": [
@@ -1043,7 +1058,9 @@
       "1611161142af0827cd",
       "1611584327c856fb17",
       "1611198298e30fd606",
-      "161167554273545f8a"
+      "161167554273545f8a",
+      "16153976549dabbd3d",
+      "1615342542402f807f"
     ]
   },
   "presets": {

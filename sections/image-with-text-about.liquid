@@ -1,0 +1,50 @@
+{% assign image = section.settings.image %}
+{% assign text = section.settings.text %}
+
+<section style="background:{{ section.settings.bg_color }};" class="about-text-image">
+	<div class="Container">
+		<div class="columns">
+			<div class="column column-text">
+				<h3>&nbsp;Caramel &mdash;	 </h3>
+				<span>&nbsp;Our Story</span>
+			</div>
+			<div class="column">
+				<img class="Image--lazyLoad Image--fadeIn" src="{{ image | img_url: 'grande' }}" data-src="{{ image | img_url: 'grande' }}"
+					data-sizes="auto" data-expand="-100" alt="{{ image.alt | escape }}"
+					data-max-width="{{ image.width }}" data-max-height="{{ image.height }}"
+					data-original-src="{{ image | img_url: 'master' }}">
+				<span class="Image__Loader">
+			</div>
+			<div class="column column-last">
+			{{ text }}
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+
+{
+    "name": "Image with text",
+    "settings": [
+		{
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background color",
+			"default": "#f8f5f3"
+		},
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        }, {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p></p>"
+        }
+		
+    ]
+}
+
+{% endschema %}

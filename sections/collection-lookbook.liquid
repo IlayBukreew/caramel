@@ -1,0 +1,176 @@
+
+<script>
+  function checkOutOfStock(element) {
+    const className = 'ProductForm__Option'
+    // base on product selector find and disable sizes labels that out of stock
+    const select = element ? document.querySelector(`.${className} select`) : document.querySelector('.ProductForm__Option select'),
+      sizeLabels = element ? document.querySelectorAll(`.${className} .SizeSwatchList li`) : document.querySelectorAll('.SizeSwatchList li'),
+      outOfStockItems = []
+	 
+  
+   if(select) {
+	for (let option of select.options) {
+      if (option.getAttribute('disabled')) {
+        let optionName_split1 = option.innerText.split('/')[1] || option.innerText,
+          optionName_split2 = optionName_split1.split('-')[0].trim()
+        outOfStockItems.push(optionName_split2)
+      }
+    }
+    const sizesArray = Array.from(sizeLabels)
+    const optionsLable = sizesArray.map(el => {
+      return el = el.lastElementChild
+    })
+    outOfStockItems.forEach(item => {
+      let optionOutOfStock = optionsLable.find(el => el.textContent == item)
+      optionOutOfStock ? optionOutOfStock.classList.add('disabled') : null
+    })
+   }
+  
+  }
+  function sizeChange(productId) {
+    const select = document.getElementById(`product-select-${productId}`),
+          sizeLables = document.querySelectorAll(`#product_form_${productId} .HorizontalList__Item`)
+    
+    sizeLables.forEach((label, index) => {
+      label.onclick = () => {
+        select.selectedIndex = index
+      }
+    })
+  }
+</script>
+<section class="lookbook-collection">
+<div class="Container">
+      <h2 class="SectionHeader__Heading Heading u-h1">shop the look</h2>
+</div>
+	<div class="anchor-sidebar">
+		{% paginate collection.products by 6 %}
+			{% for product in collection.products %}
+				<a class="anchor-rewrite" href="product-{{forloop.index}}">{{ product.featured_image |img_tag }}</a>
+			{% endfor %}
+		{% endpaginate %}
+	</div>
+{% paginate collection.products by 6 %}
+
+	{% for product in collection.products %}
+	{% capture image_url %} {{ product.featured_image | img_url: 'original' }} {% endcapture %}
+	{% assign media = product.featured_image %}
+	<div class="product-{{forloop.index }} two-column-card">
+	<a id="product-{{forloop.index}}"></a>
+		<div class="wrapper">
+			<div class="card-product-image">
+				<a href="{{ product.url }}">
+					<img class="Image--lazyLoad Image--fadeIn" src="{{ image_url }}" data-src="{{ image_url }}" data-sizes="auto" data-expand="-100" alt="{{ media.alt | escape }}" data-max-width="{{ media.width }}" data-max-height="{{ media.height }}" data-original-src="{{ media | img_url: 'master' }}">
+                	<span class="Image__Loader">
+				</a>
+			</div>
+			<div class="Product__Info {% if media_count == 0 %}Product__Info--noGallery{% endif %}">
+				<div class="Container">
+					{%- render 'product-meta', product: product, show_description: true -%}
+
+					{%- if product.template_suffix != 'coming-soon' -%}
+					{%- render 'product-form', product: product -%}
+					{%- endif -%}
+
+
+					<div class="ProductMeta__Description">
+						<div class="Rte">
+							{%- comment -%}
+							We have figured out that some merchants were copy-pasting huge chunk of code into the product
+							description,
+							which can make the theme crashes if it contains some special attributes used by the theme. We
+							therefore make sure to process this
+							{%- endcomment -%}
+
+							{{ product.description | replace: 'data-section-type', 'data-section-type-placeholder' }}
+						</div>
+
+
+						<div class="ProductMeta__ShareButtons hidden-pocket">
+							<span
+								class="ProductMeta__ShareTitle Heading Text--subdued u-h7">{{ 'product.form.share' | t }}</span>
+
+							{%- assign share_url = shop.url | append: product.url -%}
+							{%- assign twitter_text = product.title -%}
+							{%- assign pinterest_description = product.description | strip_html | truncatewords: 15 | url_param_escape -%}
+							{%- assign pinterest_image = product.featured_image | img_url: 'large' | prepend: 'https:' -%}
+
+							<div class="ProductMeta__ShareList Text--subdued">
+								<a class="ProductMeta__ShareItem"
+									href="https://www.facebook.com/sharer.php?u={{ share_url }}" target="_blank"
+									rel="noopener" aria-label="Facebook">{%- render 'icon' with 'facebook' -%}</a>
+								<a class="ProductMeta__ShareItem"
+									href="https://twitter.com/share?{% if twitter_text != blank %}text={{twitter_text}}&{% endif %}url={{ share_url }}"
+									target="_blank" rel="noopener"
+									aria-label="Twitter">{%- render 'icon' with 'twitter' -%}</a>
+								<a class="ProductMeta__ShareItem"
+									href="https://pinterest.com/pin/create/button/?url={{ share_url }}{% if pinterest_image != blank %}&media={{ pinterest_image }}{% endif %}&description={{ pinterest_description }}"
+									target="_blank" rel="noopener"
+									aria-label="Pinterest">{%- render 'icon' with 'pinterest' -%}</a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		checkOutOfStock('product-{{forloop.index }}')
+    sizeChange({{product.id}})
+	</script>
+	{% endfor %}
+	{%- if paginate.pages > 1 -%}
+    <nav role="navigation">
+      <ol class="pagination">
+        {%- if paginate.previous-%}
+          <li>
+            <a href="{{ paginate.previous.url }}">
+              <span aria-hidden="true">&laquo;</span>
+              Previous <span class="visuallyhidden">page</span>
+            </a>
+          </li>
+        {%- else -%}
+          <li class="disabled">
+            <span aria-hidden="true">&laquo;</span>
+            Previous <span class="visuallyhidden">page</span>
+          </li>
+        {%- endif -%}
+
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <li>
+              <a href="{{ part.url }}">
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </a>
+            </li>
+          {%- else -%}
+            {%- if part.title == paginate.current_page -%}
+              <li class="active" aria-current="page">
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </li>
+            {%- else -%}
+              <li>
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if paginate.next -%}
+          <li>
+            <a href="{{ paginate.next.url }}">
+              Next <span class="visuallyhidden">page</span>
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        {%- else -%}
+          <li class="disabled">
+            Next <span class="visuallyhidden">page</span>
+            <span aria-hidden="true">&raquo;</span>
+          </li>
+        {%- endif -%}
+      </ol>
+    </nav>
+  {%- endif -%}
+{% endpaginate %}
+</section>

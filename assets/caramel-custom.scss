@@ -29,6 +29,18 @@ body {
   font-family: 'MaisonNeueWEB-Demi';
 }
 
+::-moz-selection {
+  background: #e9e7e7;
+  color: #000;
+  -moz-text-shadow: none
+}
+
+::selection {
+  background: #e9e7e7;
+  color: #000;
+  -webkit-text-shadow: none;
+  text-shadow: none;
+}
 
 /*=============================================
 =            Section image-with-overlay            =
@@ -289,7 +301,7 @@ body {
 .DropdownMenu {
   max-width: unset;
   height: 100vh;
-  width: 25vw;
+  width: 35vw;
   min-width: 450px;
   top: 0;
   left: -100%;
@@ -298,6 +310,20 @@ body {
   padding-top: 100px;
   padding-left: 25px;
   z-index: 1;
+
+  .last-menu-items-wrapper {
+    margin-top: 20px;
+  }
+
+
+
+  .last-menu-items {
+    margin-bottom: 5px !important;
+
+    a {
+      color: #636363;
+    }
+  }
 
   &.open {
     left: 0;
@@ -336,18 +362,6 @@ body {
   li.Linklist__Item:nth-child(11) {
     margin-bottom: 30px;
 
-  }
-
-  li.Linklist__Item:nth-child(12) {
-    a {
-      color: #636363;
-    }
-  }
-
-  li.Linklist__Item:nth-child(13) {
-    a {
-      color: #636363;
-    }
   }
 
 
@@ -1469,6 +1483,52 @@ body {
 =            Product page            =
 =============================================*/
 
+#size_pop_up {
+  pointer-events: none;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000b0;
+  z-index: 1;
+  transition: opacity .4s ease;
+
+  &.open {
+    pointer-events: all;
+    opacity: 1;
+  }
+
+  .size-content {
+    width: 35%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    overflow-y: scroll;
+    margin-top: 100px;
+    padding: 50px 0;
+    height: 87vh;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 8px;
+      background-color: #e6e6e6;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #ddd3a6;
+    }
+
+    @media (max-width: 800px) {
+      width: 90%;
+      margin-top: 70px;
+      padding: 0 15px;
+    }
+  }
+}
 
 .product-custom {
 
@@ -1685,6 +1745,23 @@ body {
 
 
 .template-product {
+  label.SizeSwatch.disabled {
+    opacity: 0.6;
+    position: relative;
+    pointer-events: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      background-color: #000;
+      width: 1px;
+      height: 49px;
+      top: -7px;
+      left: 16px;
+      transform: rotate(45deg);
+    }
+  }
+
   .Product__QuickNav {
     .Product__Tabs {
       margin: 10px 0;
@@ -1885,9 +1962,7 @@ body {
     border-radius: 50px;
   }
 
-  .Linklist__Item {
-    text-align: right;
-  }
+
 
   .Collapsible--autoExpand .Collapsible__Button {
     text-align: right;
@@ -2119,12 +2194,14 @@ body {
 
 
 /*=============================================
-=            Common media query            =
+=            Common styles            =
 =============================================*/
 
 
 
-
+.Modal {
+  z-index: 100;
+}
 
 
 @media screen and (max-width: 800px) {
@@ -2140,6 +2217,37 @@ body {
   }
 }
 
+@media (max-width: 1200px) {
+  .story-two .col-one .col-content {
+    padding: 0 15px;
+  }
+
+  .story-four .col-one .CollectionItem.Carousel__Cell[data-slide-index] .wrapper-huyaper:not(.image_third .wrapper-huyaper) {
+    height: 500px;
+    width: 80vw;
+  }
+
+  .story-four .image_third {
+    bottom: -50px;
+    left: 15px;
+    width: 100px;
+  }
+
+  .story-four .image_third .wrapper-huyaper {
+    width: 90px;
+    height: 125px;
+  }
+
+  .story-four .image {
+
+    top: 30% !important;
+    right: 15px;
+    min-width: 150px;
+    width: unset;
+  }
+
+}
+
 
 
 
@@ -2151,7 +2259,7 @@ body {
 }
 
 
-/*=====  End of Media query  ======*/
+/*=====  End of common styles  ======*/
 
 
 
@@ -2682,3 +2790,351 @@ body {
 }
 
 /*=====  End of Journal Post section  ======*/
+
+
+/*=============================================
+=            lookbook collection            =
+=============================================*/
+
+.lookbook-collection {
+  label.SizeSwatch.disabled {
+    opacity: 0.6;
+    position: relative;
+    pointer-events: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      background-color: #000;
+      width: 1px;
+      height: 49px;
+      top: -7px;
+      left: 16px;
+      transform: rotate(45deg);
+    }
+  }
+
+  margin: 100px 0;
+
+  .Product__Info {
+    position: static;
+  }
+
+  .two-column-card {
+    display: flex;
+    justify-content: center;
+
+    &:last-child .wrapper {
+      border-bottom: 1px solid;
+    }
+  }
+
+  .wrapper {
+    max-width: 1440px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-top: 1px solid;
+    padding: 50px 0px;
+
+
+  }
+
+  .card-product-image,
+  .Product__Info {
+    width: 50%;
+    position: relative;
+  }
+
+  .CollectionItem__Content {
+    display: none;
+  }
+
+  .anchor-sidebar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    left: 60px;
+  }
+
+  .anchor-rewrite {
+    padding: 5px;
+    border: 1px solid transparent;
+    transition: border .4s ease;
+
+    &:hover {
+      border: 1px solid #000;
+    }
+  }
+
+  .Product__Info {
+    top: 0;
+  }
+
+  h2.SectionHeader__Heading.Heading.u-h1 {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+
+
+
+
+  @media (max-width: 1200px) {
+    margin-top: 50px;
+    padding: 0px 10px;
+
+    .anchor-sidebar {
+      position: sticky;
+      justify-content: center;
+      overflow-x: scroll;
+      width: 95vw;
+      flex-direction: row;
+      margin-bottom: 15px;
+    }
+
+    .anchor-rewrite img {
+      width: 100px;
+    }
+
+    .two-column-card .wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card-product-image,
+    .Product__Info {
+      width: 100%;
+    }
+
+
+  }
+
+  @media (min-width: 1200px) {
+    .wrapper {
+      width: 75%;
+    }
+
+    .SectionHeader__Heading {
+      display: none;
+    }
+  }
+
+}
+
+/*=====  End of lookbook collection  ======*/
+
+/*=============================================
+=            About us page            =
+=============================================*/
+
+.page-about-us {
+  .images {
+    display: flex;
+    justify-content: center;
+  }
+
+  .image:first-child {
+    margin-right: 10px;
+  }
+
+  .heading {
+    text-align: center;
+    font-size: 14px;
+    font-family: 'MaisonNeueWEB-Demi';
+    margin-top: 15px;
+  }
+
+
+  .about-banner {
+    margin: 50px 0;
+  }
+
+  .columns {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .column-last {
+    max-width: 35%;
+    font-family: 'NewCenturySchlbkLTStd_Roman';
+
+  }
+
+  .about-text-image {
+    padding: 50px 0;
+  }
+
+  .column {
+    &>h3 {
+      font-size: 14px;
+      font-family: 'NewCenturySchlbkLTStd_Bd';
+    }
+
+    &>span {
+      font-size: 14px;
+      font-family: 'NewCenturySchlbkLTStd_It';
+    }
+  }
+
+  .cards {
+    display: flex;
+    margin-top: 15px;
+    justify-content: center;
+  }
+
+  .card {
+    margin: 0 10px;
+
+    img {
+      max-height: 300px;
+    }
+  }
+
+  .our-values {
+    margin: 100px 0;
+  }
+
+  .store {
+    .heading {
+      text-align: left;
+      font-family: 'MaisonNeueWEB-Book';
+      font-weight: bold;
+      margin: 0;
+    }
+  }
+
+  .text {
+    margin-top: 5px;
+
+    h2 {
+      font-size: 14px;
+      font-family: 'MaisonNeueWEB-Book';
+      font-weight: 600;
+    }
+
+    p {
+      font-family: 'NewCenturySchlbkLTStd_Roman';
+    }
+  }
+
+  .our-stores {
+    margin: 50px 0;
+
+    .column-stores p {
+      margin-bottom: 0;
+      width: 250px;
+    }
+
+    .columns {
+      justify-content: flex-start;
+    }
+
+    .column-img {
+      margin: 0 80px;
+    }
+
+    .column-stores {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .store {
+      width: 50%;
+      margin-bottom: 25px;
+
+    }
+
+    .column-text {
+      min-width: 100px;
+    }
+
+    .column.column-img.right {
+      order: 2;
+    }
+  }
+
+
+
+  @media (max-width: 1200px) {
+    .our-stores .store {
+      width: unset;
+      text-align: left;
+    }
+
+    .cards {
+      flex-wrap: wrap;
+    }
+
+    .column {
+      width: 100%;
+      max-width: 100%;
+
+      &:nth-child(2) {
+        margin: 25px 0;
+      }
+    }
+
+    .column-text {
+      display: flex;
+      justify-content: center;
+    }
+
+    .column-last {
+      text-align: justify;
+    }
+
+    .columns {
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .card {
+      margin-bottom: 15px;
+    }
+
+    .our-stores {
+      .column.column-text {
+        margin-right: 0 !important;
+      }
+
+      .column.column-img.right {
+        order: 0;
+      }
+    }
+
+    .our-values {
+      margin: 50px 0;
+    }
+
+  }
+}
+
+
+/*=====  End of About us page  ======*/
+
+
+/*=============================================
+=            newsletter popup            =
+=============================================*/
+
+.NewsletterPopup {
+  background-color: #f9f3ee;
+  color: #000;
+}
+
+.NewsletterPopup .Form__Input {
+  background-color: #f7e9de;
+}
+
+.NewsletterPopup .Form__Input::placeholder {
+  color: #000;
+}
+
+.NewsletterPopup .Button:not([disabled]):hover {
+  color: #000;
+}
+
+
+/*=====  End of newsletter popup  ======*/

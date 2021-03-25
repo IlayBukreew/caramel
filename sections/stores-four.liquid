@@ -1,0 +1,86 @@
+<section class="our-stores">
+	<div class="Container">
+		<div class="columns">
+				{% if section.settings.country != '' %}
+				<div class="column column-text" {% if section.settings.image_pos == 'right' %} style="margin-right:50px;" {% endif %}>
+				<h3>&nbsp;Our stores &mdash; </h3>
+				<span>&nbsp;{{ section.settings.country }}</span>
+			</div>
+		{% endif %}
+			<div class="column column-img {{ section.settings.image_pos }}">
+				{% if section.settings.image %}
+					<img class="Image--lazyLoad Image--fadeIn" src="{{ section.settings.image | img_url: 'grande' }}"
+						data-src="{{ section.settings.image | img_url: 'grande' }}" data-sizes="auto" data-expand="-100"
+						alt="{{ section.settings.image.alt | escape }}" data-max-width="{{ section.settings.image.width }}" data-max-height="{{ section.settings.image.height }}"
+						data-original-src="{{ section.settings.image | img_url: 'master' }}">
+					<span class="Image__Loader">
+				{% endif %}
+			</div>
+			<div class="column column-stores">
+				{% for block in section.blocks %}
+				{% assign store = block.settings %}
+					<div class="store">
+						<h3 class="heading">{{ store.heading }}</h3>
+						<p>{{ store.text }}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+	{
+		"name": "Stores",
+		"settings": [
+			{
+				"type": "text",
+				"id": "country",
+				"label": "Country"
+			},
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Image"
+			},
+			{
+				"type": "select",
+				"id": "image_pos",
+				"label": "Image position",
+				"options": [
+					{
+					"value": "left",
+					"label": "Left"
+					},
+					{
+					"value": "right",
+					"label": "Right"
+					}
+				],
+				"default": "left",
+				"info": "Select position of image"
+			}
+		],
+		"blocks":[
+			{
+				"type": "store",
+				"name": "Store",
+				"settings":[
+					{
+						"type": "text",
+						"id": "heading",
+						"label": "Heading"
+					},
+					{
+						"type": "richtext",
+						"id": "text",
+						"label": "Text",
+						"default": "<p></p>"
+					}
+				]
+			 }
+		 ]
+		
+
+	}
+{% endschema %}

@@ -333,7 +333,15 @@ HEADER CONTENT
                           {%- endif -%}
                         </li>
                       {%- endfor -%}
+                      <div class="last-menu-items-wrapper">
+                      {%- for linkis in linklists.menu_for_all.links -%}
+                        <li class="Linklist__Item last-menu-items">
+                          <a href="{{ linkis.url }}" class="Link Link--secondary">{{ linkis.title | escape }}</a>
+                        </li>
+                      {%- endfor -%}
+                      </div>
                     </ul>
+                    
                     <ul class="Linklist social_links">
                      {%- for links in linklists.social.links -%}
                         <li class="Linklist__Item">

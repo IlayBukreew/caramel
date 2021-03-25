@@ -6,7 +6,11 @@
       <div class="col-content">
         {%if section.settings.image_3 %}
         <div class="image_third">
-          {%- render 'image', image: section.settings.image_3 -%}
+        <img class="Image--lazyLoad Image--fadeIn" src="{{ section.settings.image_3 | img_url: 'grande' }}"
+						data-src="{{ section.settings.image_3 | img_url: 'grande' }}" data-sizes="auto" data-expand="-100"
+						alt="{{ section.settings.image_3.alt | escape }}" data-max-width="{{ section.settings.image_3.width }}" data-max-height="{{ section.settings.image_3.height }}"
+						data-original-src="{{ section.settings.image_3 | img_url: 'master' }}">
+					<span class="Image__Loader">
         </div>
         {% endif %}
         {%if section.settings.main_img %}

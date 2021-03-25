@@ -65,22 +65,23 @@ The theme will automatically link the tab to the page
 {%- endif -%}
 {%- endfor -%}
 
+{% assign size_is_set = false %}
+{% for tag in product.tags %}
+  {% if tag contains "Sizeguide_" %}
+  {% assign size_is_set = true %}
+    {% capture page_name %} {{ tag | split: '_' | last }} {% endcapture %}
+  {% endif %}
+{% endfor %}
+
 {%- if first_page.handle != blank or second_page.handle != blank or has_unique_tab_1 or has_unique_tab_2 or has_unique_tab_3 or section.settings.reviews_enabled -%}
 <div class="Product__Tabs">
-  <div class="Collapsible Collapsible--large">
-    <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">SIZE GUIDE
+  {% if size_is_set %}
+    <div class="Collapsible Collapsible--large">
+    <button id="size_guide" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">SIZE GUIDE
       <span class="Collapsible__Plus"></span>
     </button>
-
-    <div class="Collapsible__Inner" style="overflow: hidden; height: 0px;">
-      <div class="Collapsible__Content">
-        <div class="Rte">
-          <meta charset="utf-8">
-          {{ pages.size-guide.content }}
-        </div>
-      </div>
-    </div>
   </div>
+  {% endif %}
   {%- if has_unique_tab_1 -%}
   <div class="Collapsible Collapsible--large">
     <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">

@@ -23,6 +23,8 @@
  * }));
  */
 document.addEventListener("DOMContentLoaded", function () {
+
+  const isProductPage = document.body.classList.contains('template-product')
   // footer accordion
   function footerAccordion() {
     const titles = document.querySelectorAll(".Footer__Block .Footer__Title")
@@ -134,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // product button observer
+  // for atc button fix
   function atcObserver() {
     const target = document.querySelector('[data-action="add-to-cart"]')
     if (target) {
@@ -163,15 +166,12 @@ document.addEventListener("DOMContentLoaded", function () {
       arrow.style.position = "relative"
       arrow.style.top = "3px"
     })
-    console.log(arrows)
   }
 
   function sidebarCollection() {
     const close = document.getElementById("close_filters")
     if (close) {
-      const buttons = document.querySelectorAll(
-          ".template-collection .Collapsible .Collapsible__Button"
-        ),
+      const buttons = document.querySelectorAll(".template-collection .Collapsible .Collapsible__Button"),
         sidebar = document.querySelector(".CollectionInner__Sidebar"),
         open = document.getElementById("filter_button"),
         mobileClose = document.getElementById("close_icon")
@@ -192,14 +192,78 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function sizeGuide() {
+    const button = document.getElementById('size_guide'),
+      popup = document.getElementById('size_pop_up')
+    if (button) {
+      button.onclick = () => {
+        popup.classList.add('open')
+        document.documentElement.style.overflow = 'hidden'
+      }
+    }
+    popup.onclick = () => {
+      popup.classList.remove('open')
+      document.documentElement.style.overflowY = 'scroll'
+    }
+  }
+
+  function checkOutOfStock(element) {
+    console.log('neloh');
+    const className = 'ProductForm__Option'
+    // base on product selector find and disable sizes labels that out of stock
+    const select = element ? document.querySelector(`.${className} select`) : document.querySelector('.ProductForm__Option select'),
+      sizeLabels = element ? document.querySelectorAll(`.${className} .SizeSwatchList li`) : document.querySelectorAll('.SizeSwatchList li'),
+      outOfStockItems = []
+
+    for (let option of select.options) {
+      if (option.getAttribute('disabled')) {
+
+        let optionName_split1 = option.innerText.split('/')[1] || option.innerText,
+          optionName_split2 = optionName_split1.split('-')[0].trim()
+        outOfStockItems.push(optionName_split2)
+      }
+    }
+    const sizesArray = Array.from(sizeLabels)
+    const optionsLable = sizesArray.map(el => {
+      return el = el.lastElementChild
+    })
+    outOfStockItems.forEach(item => {
+      let optionOutOfStock = optionsLable.find(el => el.textContent == item)
+      optionOutOfStock ? optionOutOfStock.classList.add('disabled') : null
+    })
+
+  }
+
+
+
+
+  function anchorRewriteFunc() {
+    let anchors = document.querySelectorAll('.anchor-rewrite')
+
+    anchors.forEach(anchor => {
+      anchor.onclick = (e) => {
+        e.preventDefault()
+        let link = anchor.getAttribute('href')
+        let scrollToElement = link ? document.getElementById(link) : null
+        let elemTop = scrollToElement.getBoundingClientRect().top
+        window.scrollTo({
+          top: elemTop - 40,
+          behavior: "smooth"
+        });
+      }
+    })
+  }
+
+  anchorRewriteFunc()
+  if (isProductPage) {
+    sizeGuide()
+    checkOutOfStock()
+    atcObserver()
+  }
   sidebarCollection()
   //mac os fix
   if (navigator.platform == "MacIntel") {
     macFix()
-  }
-  // product atc button fix
-  if (document.body.classList.contains("template-product")) {
-    atcObserver()
   }
 
   sidebar()

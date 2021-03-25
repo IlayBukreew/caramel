@@ -1,0 +1,15 @@
+{% if request.page_type == 'product' %}
+      {% for tag in product.tags %}
+        {% if tag contains "Sizeguide_" %}
+          {%- capture page_name -%}{{ tag | split: '_' | last }}{%- endcapture -%}
+          {% assign page = pages[page_name].content %}
+        {% endif %}
+      {% endfor %}
+      <div id="size_pop_up">
+        <div class="size-content">
+          <div class="Rte">
+              {{ page }}
+            </div>
+        </div>
+      </div>
+   {% endif %}
